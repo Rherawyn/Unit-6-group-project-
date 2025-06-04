@@ -1,12 +1,9 @@
 void gameover() {
-  background -= 1;
-  background(background,s,b);
-  
-  if(background <= 0) background = 255;
+  background(yelloworange);
 }
 
 void gameoverMousePressed() {
-  mode = "game";
+  mode = "intro";
 }
 
 void gameoverMouseDragged() {

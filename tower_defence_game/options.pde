@@ -1,9 +1,9 @@
 void options() {
-  
+  background(blue);
 }
 
 void optionsMousePressed() {
-  
+  mode = "game";
 }
 
 void optionsMouseDragged() {
