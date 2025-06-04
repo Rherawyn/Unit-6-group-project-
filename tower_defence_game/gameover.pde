@@ -3,7 +3,7 @@ void gameover() {
 }
 
 void gameoverMousePressed() {
-  mode = "intro";
+  
 }
 
 void gameoverMouseDragged() {

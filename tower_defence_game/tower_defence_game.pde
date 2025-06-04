@@ -13,14 +13,26 @@ color cyan = #43AA8B;
 color greyblue = #4D908E;
 color navy = #577590;
 color blue = #277DA1;
+color black = 0;
+color white = 255;
 float background = 100;
 float s = 120;
 float b = 255;
 
+float x = width/2;
+float y = height/2;
+
 void setup() {
   size(1400,900);
   colorMode(HSB);
-  textMode(CENTER,CENTER);
+  textAlign(CENTER,CENTER);
+  
+  strokeWeight(7);
+  stroke(black);
+  fill(red);
+  
+  x = width/2;
+  y = height/2;
 }
 
 void draw() {

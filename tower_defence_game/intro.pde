@@ -3,7 +3,7 @@ void intro() {
 }
 
 void introMousePressed() {
-  mode = "options";
+  
 }
 
 void introMouseDragged() {

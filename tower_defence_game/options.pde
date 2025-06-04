@@ -3,7 +3,7 @@ void options() {
 }
 
 void optionsMousePressed() {
-  mode = "game";
+  
 }
 
 void optionsMouseDragged() {
