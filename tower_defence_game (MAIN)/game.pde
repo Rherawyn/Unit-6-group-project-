@@ -1,3 +1,4 @@
+//menu vars
 int health = 100;
 int cash = 0;
 int price;
@@ -6,6 +7,8 @@ boolean speedup = false;
 void game() {
   background(white);
   strokeWeight(7); //purchase menu outline
+  gameMap();
+  
   stroke(#332000);
   fill(#704700); //brown
   rect(1200,-10, 210,920);
@@ -55,6 +58,12 @@ void game() {
   
 }
 
+void gameMap() {
+ line (lx[1],ly[1],lx[2],ly[2]);
+ line (lx[2],ly[2],lx[3],ly[3]);
+ line (lx[3],ly[3],lx[4],ly[4]);
+}
+
 void normalCat(int x, int y) {
   translate(x, y);
   pushMatrix();
@@ -88,7 +97,7 @@ void gameMouseDragged() {
 }
 
 void gameMouseReleased() {
-  
+ 
 }
 
 void gameKeyPressed() {
