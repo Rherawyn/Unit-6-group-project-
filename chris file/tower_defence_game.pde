@@ -20,8 +20,6 @@ float background = 100;
 float s = 120;
 float b = 255;
 
-float x = width/2;
-float y = height/2;
 
 ArrayList<firewiz> wizard;
 
@@ -34,8 +32,6 @@ void setup() {
   stroke(black);
   fill(red);
   
-  x = width/2;
-  y = height/2;
   
   wizard = new ArrayList<firewiz>();
   
