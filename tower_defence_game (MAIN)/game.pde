@@ -54,14 +54,14 @@ void game() {
   triangle(1283,830, 1283,850, 1297,840);
   triangle(1303,830, 1303,850, 1317,840);
   
-  normalCat(900,500);
-  
 }
 
 void gameMap() {
- line (lx[1],ly[1],lx[2],ly[2]);
- line (lx[2],ly[2],lx[3],ly[3]);
- line (lx[3],ly[3],lx[4],ly[4]);
+  int i = 1;
+  while (i < ln-1) {
+ line (lx[i],ly[i],lx[i+1],ly[i+1]);
+ i ++;
+  }
 }
 
 void normalCat(int x, int y) {
