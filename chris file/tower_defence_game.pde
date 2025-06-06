@@ -23,6 +23,8 @@ float b = 255;
 float x = width/2;
 float y = height/2;
 
+ArrayList<firewiz> wizard;
+
 void setup() {
   size(1400,900);
   colorMode(HSB);
@@ -34,6 +36,9 @@ void setup() {
   
   x = width/2;
   y = height/2;
+  
+  wizard = new ArrayList<firewiz>();
+  
 }
 
 void draw() {
