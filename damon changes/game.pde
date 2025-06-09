@@ -1,6 +1,11 @@
 void game() {
   background(white);
   strokeWeight(7); //purchase menu outline
+  gameMap();
+  normalCat(1000,500);
+  camoCat(1000,650);
+  moab(1000,800);
+  longCat(1000,300);
   stroke(#332000);
   fill(#704700); //brown
   rect(1200,-10, 210,920);
@@ -11,6 +16,7 @@ void game() {
   line(1200,490, 1400,490);
   line(1200,590, 1400,590);
   
+
   fill(#F9C74F); //money display
   textSize(40);
   text("$$ " + cash, 1230,50);
@@ -31,8 +37,17 @@ void game() {
   strokeWeight(4);
   tactile(1250,840, 40);
   circle(1250,840, 70);
-  tactile(1350,840, 40);
+  
+  tactile(1350,840, 40); //start round button
   circle(1350,840, 70);
+  
+  tactile(1125,70,40);
+  circle(1125,70,70);
+  fill(#0489D8);
+  noStroke();
+  rect(1108,65, 34,25);
+  triangle(1100,70, 1150,70, 1125,45);
+  
   if (speedup == false) {
     fill(#0489D8);
     stroke(#0489D8);
@@ -103,6 +118,56 @@ void camoCat(int x, int y) {
   popMatrix();
 }
 
+void moab(int x, int y) {
+  pushMatrix();
+  translate(x,y);
+  fill(255);
+  stroke(0);
+  strokeWeight(3);
+  ellipse(0,0, 140,130);
+  scale(2);
+  strokeWeight(1.5);
+  triangle(-20,-27, -10,-31, -17,-38);
+  triangle(20,-27, 10,-31, 17,-38);
+  triangle(-20,28, -15,30, -18,32);
+  triangle(20,28, 15,30, 18,32);
+  noFill();
+  ellipse(-2,-8, 14,10);
+  ellipse(8,-8, 14,10);
+  fill(255);
+  stroke(255);
+  ellipse(5,-15, 45,10);
+  stroke(0);
+  fill(0);
+  circle(-11,-15, 2); //eyes
+  circle(15,-13, 2);
+  popMatrix();
+}
+
+void longCat(int x, int y) {
+  pushMatrix();
+  translate(x, y);
+  fill(255);
+  stroke(0);
+  strokeWeight(3);
+  ellipse(0,0, 70,61);
+  triangle(-20,-27, -10,-31, -17,-38);
+  triangle(20,-27, 10,-31, 17,-38);
+  triangle(-20,26, -15,28, -18,37);
+  triangle(20,26, 15,28, 18,37);
+  noFill();
+  ellipse(-2,-8, 14,10);
+  ellipse(8,-8, 14,10);
+  fill(255);
+  stroke(255);
+  ellipse(5,-15, 45,10);
+  stroke(0);
+  fill(0);
+  circle(-11,-15, 2); //eyes
+  circle(15,-13, 2);
+  popMatrix();
+}
+
 
 void tactile(int x, int y, int r) {
   if (dist(x, y, mouseX, mouseY) < r) {
@@ -121,6 +186,10 @@ void gameMousePressed() {
   if (dist(1350,840, mouseX, mouseY) < 40) {
     if (roundPhase == false) roundPhase = true;
   }
+  
+  if (dist(1125,70, mouseX, mouseY) < 40) {
+    if (mode == "game") mode = "intro";
+  }
 }
 
 void gameMouseDragged() {
@@ -128,15 +197,23 @@ void gameMouseDragged() {
 }
 
 void gameMouseReleased() {
-  
+ 
 }
 
 void gameKeyPressed() {
-
 }
+  
 
 void gameKeyReleased() {
   
+}
+
+void gameMap() {
+  int i = 1;
+  while (i < ln-1) {
+ line (lx[i],ly[i],lx[i+1],ly[i+1]);
+ i ++;
+  }
 }
 
 void fireWizard() {
