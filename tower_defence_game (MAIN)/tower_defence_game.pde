@@ -27,11 +27,18 @@ float[] lx;
 float[] ly;
 int ln;
 
+int health = 100;
+int cash = 0;
+int price;
+boolean speedup = false;
+boolean buyPhase = true;
+boolean roundPhase = false;
+
 
 void setup() {
   size(1400,900);
   colorMode(HSB);
-  textAlign(CENTER,CENTER);
+  textAlign(LEFT,CENTER);
   
   strokeWeight(7);
   stroke(black);

@@ -1,9 +1,3 @@
-//menu vars
-int health = 100;
-int cash = 0;
-int price;
-boolean speedup = false;
-
 void game() {
   background(white);
   strokeWeight(7); //purchase menu outline
@@ -34,16 +28,18 @@ void game() {
   triangle(1250, 115, 1265, 95, 1235, 95);
   ellipse(1242, 93, 14, 12);
   ellipse(1258, 93, 14, 12);
-  text(health, 1277, 115);
+  text(health, 1277, 101);
   
   fill(255); //price display
-  text("Price: " + price, 1233, 170);
+  text("Price: " + price, 1233, 150);
   
   fill(#39B4FF); //speedup button
   stroke(#0489D8);
   strokeWeight(4);
-  tactile(1300,840, 40);
-  circle(1300,840, 70);
+  tactile(1250,840, 40);
+  circle(1250,840, 70);
+  tactile(1350,840, 40);
+  circle(1350,840, 70);
   if (speedup == false) {
     fill(#0489D8);
     stroke(#0489D8);
@@ -51,34 +47,69 @@ void game() {
     fill(#62F3FF);
     stroke(#62F3FF);
   }
-  triangle(1283,830, 1283,850, 1297,840);
-  triangle(1303,830, 1303,850, 1317,840);
-  
-}
-
-void gameMap() {
-  int i = 1;
-  while (i < ln-1) {
- line (lx[i],ly[i],lx[i+1],ly[i+1]);
- i ++;
-  }
+  triangle(1233,830, 1233,850, 1247,840);
+  triangle(1253,830, 1253,850, 1267,840);
 }
 
 void normalCat(int x, int y) {
-  translate(x, y);
   pushMatrix();
+  translate(x, y);
   fill(255);
   stroke(0);
   strokeWeight(3);
   ellipse(0,0, 70,61);
   triangle(-20,-27, -10,-31, -17,-38);
   triangle(20,-27, 10,-31, 17,-38);
+  triangle(-20,26, -15,28, -18,30);
+  triangle(20,26, 15,28, 18,30);
+  noFill();
+  ellipse(-2,-8, 14,10);
+  ellipse(8,-8, 14,10);
+  fill(255);
+  stroke(255);
+  ellipse(5,-15, 45,10);
+  stroke(0);
+  fill(0);
+  circle(-11,-15, 2); //eyes
+  circle(15,-13, 2);
+  popMatrix();
+}
+
+void camoCat(int x, int y) {
+  pushMatrix();
+  translate(x, y);
+  fill(255);
+  stroke(0);
+  strokeWeight(3);
+  ellipse(0,0, 70,61);
+  triangle(-20,-27, -10,-31, -17,-38);
+  triangle(20,-27, 10,-31, 17,-38);
+  triangle(-20,26, -15,28, -18,30);
+  triangle(20,26, 15,28, 18,30);
+  noFill();
+  ellipse(-2,-8, 14,10);
+  ellipse(8,-8, 14,10);
+  fill(255);
+  stroke(255);
+  ellipse(5,-15, 45,10);
+  stroke(#B2B0B0);
+  fill(#B2B0B0);
+  circle(-20,15, 8);
+  circle(10,20, 12);
+  circle(4,10, 7);
+  circle(-27,0, 10);
+  circle(-20,15, 9);
+  circle(20,5, 7);
+  circle(10,-20, 8);
+  circle(-20,15, 6);
+  circle(-11,-15, 12);
+  stroke(0);
   fill(0);
   circle(-11,-15, 2);
   circle(15,-13, 2);
   popMatrix();
-  
 }
+
 
 void tactile(int x, int y, int r) {
   if (dist(x, y, mouseX, mouseY) < r) {
@@ -89,7 +120,14 @@ void tactile(int x, int y, int r) {
 }
 
 void gameMousePressed() {
+  if (dist(1250,840, mouseX, mouseY) < 40) {
+    if (speedup == false) speedup = true;
+    else if (speedup) speedup = false;
+  }
   
+  if (dist(1350,840, mouseX, mouseY) < 40) {
+    if (roundPhase == false) roundPhase = true;
+  }
 }
 
 void gameMouseDragged() {
@@ -109,6 +147,14 @@ void gameKeyPressed() {
 
 void gameKeyReleased() {
   
+}
+
+void gameMap() {
+  int i = 1;
+  while (i < ln-1) {
+ line (lx[i],ly[i],lx[i+1],ly[i+1]);
+ i ++;
+  }
 }
 
 void fireWizard() {
