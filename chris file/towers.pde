@@ -85,6 +85,7 @@ class icewiz {
 
 class elecwiz {
   float x,y, charge, size, side, paused,timer;
+  boolean beam;
   
   elecwiz() {
     x=mouseX;
@@ -94,6 +95,8 @@ class elecwiz {
     side = 60;
     paused = 1;
     timer = 40;
+    beam = false;
+    
   }
   
   void act() {
@@ -101,7 +104,7 @@ class elecwiz {
       charge = 0;
       side = 60;
       paused = 1;
-      icebulletclass.add(new ice(x,y, atan2(mouseY-y,mouseX-x)+radians(90) ));
+      //icebulletclass.add(new ice(x,y, atan2(mouseY-y,mouseX-x)+radians(90) ));
     }
     if(charge < size-paused) {
       charge+=0.3;
@@ -110,11 +113,13 @@ class elecwiz {
       timer -= 1;
     }
     
+    if (timer < 40 && timer >= 0) beam = true;
+    
     if (timer == 0) {
       paused = 0;
       timer = 40;
+      beam = false;
     }
-    
     
     pushMatrix();
     translate(x,y);
@@ -127,6 +132,7 @@ class elecwiz {
     rotate(radians(-side*2));
     circle(0,-90, charge);
     rotate(radians(side));
+    if(beam) rect(-timer/2, -80, timer, -10000);
     stroke(black);
     fill(yellow);
     circle(0,0, 100);
