@@ -41,12 +41,12 @@ void game() {
   tactile(1350,840, 40); //start round button
   circle(1350,840, 70);
   
-  tactile(1125,70,40);
+  tactile(1125,70,40); //pause button
   circle(1125,70,70);
   fill(#0489D8);
   noStroke();
-  rect(1108,65, 34,25);
-  triangle(1100,70, 1150,70, 1125,45);
+  rect(1108,53, 12,35);
+  rect(1130,53, 12,35);
   
   if (speedup == false) {
     fill(#0489D8);
@@ -188,7 +188,9 @@ void gameMousePressed() {
   }
   
   if (dist(1125,70, mouseX, mouseY) < 40) {
-    if (mode == "game") mode = "intro";
+    fill(#414B58,180);
+    rect(-20,-20,1450,1000);
+    if (mode == "game") mode = "pause";
   }
 }
 
