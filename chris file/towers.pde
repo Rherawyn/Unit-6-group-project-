@@ -161,7 +161,7 @@ class elecwiz {
     rotate(radians(-side*2));
     circle(0,-90, charge);
     rotate(radians(side));
-    if(beam) rect(-timer/2, -80, timer, -10000);
+    if(beam) rect(-timer/2-2, -80, timer+4, -10000);
     stroke(black);
     fill(yellow);
     circle(0,0, 100);

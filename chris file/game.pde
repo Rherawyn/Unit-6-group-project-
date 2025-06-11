@@ -69,6 +69,9 @@ void game() {
     strokeWeight(7);
     rotate(radians(90));
     if(tower == "fire") {
+      stroke(100);
+      fill(200, 100);
+      circle(0,0, 400);
       rotate(radians(45));
       stroke(black);
       fill(brown);
@@ -88,6 +91,9 @@ void game() {
       circle(0,15, 30);
       circle(0,27, 20);
     } else if(tower == "ice") {
+      stroke(100);
+      fill(200, 100);
+      circle(0,0, 1600);
       stroke(black);
       fill(blue);
       circle(0,0, 100);
@@ -95,6 +101,9 @@ void game() {
       circle(0,15, 30);
       circle(0,27, 20);
     } else if(tower == "elec") {
+      stroke(100);
+      fill(200, 100);
+      circle(0,0, 1000);
       stroke(black);
       fill(yellow);
       circle(0,0, 100);
@@ -119,18 +128,21 @@ void game() {
 }
 
 void gameMousePressed() {
-  towerThingHeld = true;
+  if(mouseButton == LEFT) towerThingHeld = true;
+  if(mouseButton == RIGHT) towerThingHeld = false;
 }
 
 void gameMouseDragged() {
 }
 
 void gameMouseReleased() {
-  towerThingHeld = false;
-  if(placeable) {
-    if(tower == "fire") firewizardclass.add(new firewiz());
-    if(tower == "ice") icewizardclass.add(new icewiz());
-    if(tower == "elec") elecwizardclass.add(new elecwiz());
+  if(mouseButton == LEFT) {
+    if(placeable && towerThingHeld) {
+      if(tower == "fire") firewizardclass.add(new firewiz());
+      if(tower == "ice") icewizardclass.add(new icewiz());
+      if(tower == "elec") elecwizardclass.add(new elecwiz());
+    }
+    towerThingHeld = false;
   }
 }
 
