@@ -3,7 +3,7 @@ void options2() {
   strokeWeight(7);
   textAlign(CENTER, CENTER);
   textSize(100);
-  line(475, 145, 925, 145);
+  line(400, 145, 1000, 145);
   strokeWeight(5);
   line(100, 250, 1300, 250);
   for (int i = 0; i < 3; i ++) {
@@ -16,7 +16,7 @@ void options2() {
   rect(50, 825, 125, 50);
   triangle(62, 850, 82, 865, 82, 835);
   fill(yelloworange);
-  text("OPTIONS", 700, 100);
+  text("GAME OPTIONS", 700, 100);
   textAlign(LEFT, CENTER);
   textSize(50);
   text("Placeholder", 125, 325);
@@ -40,7 +40,8 @@ void options2MouseDragged() {
 
 void options2MouseReleased() {
   if (mouseX > 50 && mouseX < 175 &&  mouseY >825 && mouseY < 875) {
-   mode = "pause";
+   mode = "game";
+   //mode = "pause";
   }
 }
 
