@@ -1,15 +1,19 @@
 class firewiz {
   float x,y, rot;
-  boolean switching = false;
+  boolean switching = true;
   boolean firering = false;
+  boolean can = true;
   
   firewiz() {
     x=mouseX;
     y=mouseY;
-    rot = 50;
+    rot = 46;
   }
   
   void act() {
+    can = false;
+    if(dist(x,y, mouseX,mouseY) < 200) can = true;
+    
     if(rot<=0) switching = firering = true;
     if(rot>=45) switching = false;
     
@@ -18,6 +22,11 @@ class firewiz {
     
     if(firering && rot > 30) firering = false;
     
+    if (can == false) {
+      rot = 45;
+      firering = false;
+      switching = true;
+    }
     
     pushMatrix();
     translate(x,y);
@@ -49,6 +58,7 @@ class firewiz {
 
 class icewiz {
   float x,y, charge, size;
+  boolean can = true;
   
   icewiz() {
     x=mouseX;
@@ -58,11 +68,18 @@ class icewiz {
   }
   
   void act() {
+    can = false;
+    if(dist(x,y, mouseX,mouseY) < 800) can = true;
+    
     if(charge >= size) {
       charge = 0;
       icebulletclass.add(new ice(x,y, atan2(mouseY-y,mouseX-x)+radians(90) ));
     }
     charge+=0.6;
+    
+    if (can == false) {
+      charge = 0;
+    }
     
     pushMatrix();
     translate(x,y);
@@ -86,6 +103,7 @@ class icewiz {
 class elecwiz {
   float x,y, charge, size, side, paused,timer;
   boolean beam;
+  boolean can = true;
   
   elecwiz() {
     x=mouseX;
@@ -100,11 +118,13 @@ class elecwiz {
   }
   
   void act() {
+    can = false;
+    if(dist(x,y, mouseX,mouseY) < 500) can = true;
+    
     if(charge >= size) {
       charge = 0;
       side = 60;
       paused = 1;
-      //icebulletclass.add(new ice(x,y, atan2(mouseY-y,mouseX-x)+radians(90) ));
     }
     if(charge < size-paused) {
       charge+=0.3;
@@ -117,6 +137,15 @@ class elecwiz {
     
     if (timer == 0) {
       paused = 0;
+      timer = 40;
+      beam = false;
+    }
+    
+    if (can == false) {
+      charge = 0;
+      size = 60;
+      side = 60;
+      paused = 1;
       timer = 40;
       beam = false;
     }

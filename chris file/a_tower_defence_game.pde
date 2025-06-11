@@ -2,6 +2,8 @@
 //Gabriel Somthing, Christopher Bennett, Damon Chan
 String mode = "game";
 String tower = "fire";
+boolean towerThingHeld = false;
+boolean placeable = false;
 
 //set colour
 color red = #F94144;
