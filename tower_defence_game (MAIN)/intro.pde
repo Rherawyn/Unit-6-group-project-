@@ -1,4 +1,4 @@
-boolean difficulty = true;
+boolean difficulty = true; // true = easy
 
 void intro() {
   background(greyblue);

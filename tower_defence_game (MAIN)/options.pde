@@ -17,11 +17,27 @@ void options() {
   triangle(62, 850, 82, 865, 82, 835);
   fill(yelloworange);
   text("OPTIONS", 700, 100);
-  //settings
+  textAlign(LEFT,CENTER);
   textSize(50);
-  text("BACK", 175, 325);
-  
+  text("Difficulty", 125, 325);
+  text("Placeholder", 125, 475);
+  text("Placeholder", 125, 625);
+  text("Placeholder", 775, 325);
+  text("Placeholder", 775, 475);
+  text("Placeholder", 775, 625);
+  textAlign(CENTER,CENTER);
   textSize(30);
+  //difficulty setting
+  if(difficulty) {stroke(white);}else{stroke(black);}
+  rect(400,300,100,50);
+  if(!difficulty) {stroke(white);}else{stroke(black);}
+  rect(525,300,100,50);
+  stroke(black);
+  fill(black);
+  text("Easy", 450, 325);
+  text("Hard", 575, 325);
+ 
+ fill(yelloworange);
   text("BACK", 125, 850);
 }
 
@@ -36,6 +52,14 @@ void optionsMouseDragged() {
 void optionsMouseReleased() {
   if (mouseX > 50 && mouseX < 175 &&  mouseY >825 && mouseY < 875) {
    mode = "intro";
+  }
+  
+  if (mouseX > 400 && mouseX < 500 &&  mouseY >300 && mouseY < 350) {
+   difficulty = !difficulty;
+  }
+  
+  if (mouseX > 525 && mouseX < 625 &&  mouseY >300 && mouseY < 350) {
+   difficulty = !difficulty;
   }
 }
 

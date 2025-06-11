@@ -53,5 +53,6 @@ void draw() {
   else if(mode == "intro") intro();
   else if(mode == "options") options();
   else if(mode == "gameover") gameover();
+  else if(mode == "options2") options2();
   else pause();
 }
