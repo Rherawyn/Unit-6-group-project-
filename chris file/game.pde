@@ -69,14 +69,9 @@ void game() {
     strokeWeight(7);
     rotate(radians(90));
     scale(0.7);
+    
     if(tower == "fire") {
-      stroke(100);
-      fill(200, 100);
-      if(!(placeable)) {
-        stroke(red);
-        fill(red, 50);
-      }
-      circle(0,0, 600);
+      placementCircle(600);
       rotate(radians(45));
       stroke(black);
       fill(brown);
@@ -95,34 +90,28 @@ void game() {
       circle(0,10, 60);
       circle(0,15, 30);
       circle(0,27, 20);
+      
     } else if(tower == "ice") {
-      stroke(100);
-      fill(200, 100);
-      if(!(placeable)) {
-        stroke(red);
-        fill(red, 50);
-      }
-      circle(0,0, 1000);
+      placementCircle(1000);
       stroke(black);
       fill(blue);
       circle(0,0, 100);
       circle(0,10, 60);
       circle(0,15, 30);
       circle(0,27, 20);
+      
     } else if(tower == "elec") {
-      stroke(100);
-      fill(200, 100);
-      if(!(placeable)) {
-        stroke(red);
-        fill(red, 50);
-      }
-      circle(0,0, 800);
+      placementCircle(800);
       stroke(black);
       fill(yellow);
       circle(0,0, 100);
       circle(0,10, 60);
       circle(0,15, 30);
       circle(0,27, 20);
+      
+    } else if(tower == "sword") {
+      placementCircle(200);
+      
     }
     popMatrix();
   }
@@ -163,8 +152,19 @@ void gameKeyPressed() {
   if(key == '1' || key == '!') tower = "fire";
   if(key == '2' || key == '@') tower = "ice";
   if(key == '3' || key == '#') tower = "elec";
+  if(key == '4' || key == '$') tower = "sword";
 }
 
 void gameKeyReleased() {
   
+}
+
+void placementCircle(float size) {
+  stroke(100);
+  fill(200, 100);
+  if(!(placeable)) {
+    stroke(red);
+    fill(red, 50);
+  }
+  circle(0,0, size);
 }

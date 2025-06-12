@@ -172,3 +172,19 @@ class elecwiz {
   }
   
 }
+
+
+
+class sword {
+  float x,y;
+  
+  sword() {
+    x = mouseX;
+    y = mouseY;
+  }
+  
+  void act() {
+    
+    
+  }
+}

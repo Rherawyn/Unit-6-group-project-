@@ -30,6 +30,7 @@ ArrayList<firewiz> firewizardclass;
 ArrayList<icewiz> icewizardclass;
 ArrayList<elecwiz> elecwizardclass;
 ArrayList<ice> icebulletclass;
+ArrayList<sword> swordguyclass;
 
 void setup() {
   size(1400,900);
@@ -46,6 +47,7 @@ void setup() {
   icewizardclass = new ArrayList<icewiz>();
   elecwizardclass = new ArrayList<elecwiz>();
   icebulletclass = new ArrayList<ice>();
+  swordguyclass = new ArrayList<sword>();
   
 }
 
