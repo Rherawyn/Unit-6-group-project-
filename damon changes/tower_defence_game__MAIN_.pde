@@ -34,6 +34,9 @@ boolean speedup = false;
 boolean buyPhase = true;
 boolean roundPhase = false;
 
+//enemies
+int heal = 0;
+
 
 void setup() {
   size(1400,900);
