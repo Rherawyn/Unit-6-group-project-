@@ -26,22 +26,52 @@ void options2() {
   text("Placeholder", 775, 475);
   text("Placeholder", 775, 625);
   
+  //volume
+  textAlign(CENTER, CENTER);
+  fill(black);
+  strokeWeight(7);
+  stroke(yelloworange);
+  line(125, 200, bx, 200);
+  stroke(black);
+  line(bx, 200, 625, 200);
+  circle(bx, 200, 25);
+
+  stroke(yelloworange);
+  line(775, 200, bx2, 200);
+  stroke(black);
+  line(bx2, 200, 1275, 200);
+  circle(bx2, 200, 25);
+  
+  fill(yelloworange);
+  textSize(20);
+  text("vol",100,200);
+  text(round(vol),650,200);
+  
+  vol = map(bx, 125, 625, 0, 100);
+  
   textAlign(CENTER, CENTER);
   textSize(30);
   fill(yelloworange);
   text("BACK", 125, 850);
+  textAlign(LEFT, CENTER);
 }
 
 void options2MousePressed() {
 }
 
 void options2MouseDragged() {
+  if (mouseX > 125 && mouseX < 625 && mouseY > 175 && mouseY < 225) {
+    bx = mouseX;
+  }
+  
+  if (mouseX > 775 && mouseX < 1275 && mouseY > 175 && mouseY < 225) {
+    bx2 = mouseX;
+  }
 }
 
 void options2MouseReleased() {
   if (mouseX > 50 && mouseX < 175 &&  mouseY >825 && mouseY < 875) {
    mode = "game";
-   //mode = "pause";
   }
 }
 
