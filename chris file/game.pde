@@ -12,22 +12,22 @@ void game() {
   
   placeable = true;
   
-  strokeWeight(7);
+  strokeWeight(7*0.7);
   for(firewiz aWiz : firewizardclass){
     if(aWiz.firering) {
-      stroke(orange);
-      fill(yellow);
-      circle(aWiz.x, aWiz.y, 400);
+      stroke(red);
+      fill(yelloworange);
+      circle(aWiz.x, aWiz.y, 600*0.7);
       noFill();
-      for(int l = 0; l < 10; l++) {
+      for(int l = 0; l < 20; l++) {
         for(boolean i = false; i == false;) {
           float ranx = random(-200 + aWiz.x,200 + aWiz.x);
           float rany = random(-200 + aWiz.y,200 + aWiz.y);
-          if(dist(ranx,rany, aWiz.x,aWiz.y) < 170) {
+          if(dist(ranx,rany, aWiz.x,aWiz.y) < 270*0.7) {
             pushMatrix();
             translate(ranx,rany);
             rotate(radians(random(360)));
-            arc(0,0, 50,50, radians(0),radians(random(360)));
+            arc(0,0, 50*0.7,50*0.7, radians(0),radians(random(360)));
             popMatrix();
             break;
           }
@@ -68,10 +68,15 @@ void game() {
     translate(mouseX,mouseY);
     strokeWeight(7);
     rotate(radians(90));
+    scale(0.7);
     if(tower == "fire") {
       stroke(100);
       fill(200, 100);
-      circle(0,0, 400);
+      if(!(placeable)) {
+        stroke(red);
+        fill(red, 50);
+      }
+      circle(0,0, 600);
       rotate(radians(45));
       stroke(black);
       fill(brown);
@@ -93,7 +98,11 @@ void game() {
     } else if(tower == "ice") {
       stroke(100);
       fill(200, 100);
-      circle(0,0, 1600);
+      if(!(placeable)) {
+        stroke(red);
+        fill(red, 50);
+      }
+      circle(0,0, 1000);
       stroke(black);
       fill(blue);
       circle(0,0, 100);
@@ -103,7 +112,11 @@ void game() {
     } else if(tower == "elec") {
       stroke(100);
       fill(200, 100);
-      circle(0,0, 1000);
+      if(!(placeable)) {
+        stroke(red);
+        fill(red, 50);
+      }
+      circle(0,0, 800);
       stroke(black);
       fill(yellow);
       circle(0,0, 100);

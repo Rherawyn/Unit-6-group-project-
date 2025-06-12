@@ -12,7 +12,7 @@ class firewiz {
   
   void act() {
     can = false;
-    if(dist(x,y, mouseX,mouseY) < 200) can = true;
+    if(dist(x,y, mouseX,mouseY) < 300*0.7) can = true;
     
     if(rot<=0) switching = firering = true;
     if(rot>=45) switching = false;
@@ -30,7 +30,7 @@ class firewiz {
     
     pushMatrix();
     translate(x,y);
-    scale(1);
+    scale(0.7);
     rotate(atan2(mouseY-y,mouseX-x)+radians(90+rot));
     strokeWeight(7);
     stroke(black);
@@ -69,7 +69,7 @@ class icewiz {
   
   void act() {
     can = false;
-    if(dist(x,y, mouseX,mouseY) < 800) can = true;
+    if(dist(x,y, mouseX,mouseY) < 500*0.7) can = true;
     
     if(charge >= size) {
       charge = 0;
@@ -83,7 +83,7 @@ class icewiz {
     
     pushMatrix();
     translate(x,y);
-    scale(1);
+    scale(0.7);
     rotate(atan2(mouseY-y,mouseX-x)+radians(90));
     strokeWeight(7);
     fill(blue);
@@ -119,7 +119,7 @@ class elecwiz {
   
   void act() {
     can = false;
-    if(dist(x,y, mouseX,mouseY) < 500) can = true;
+    if(dist(x,y, mouseX,mouseY) < 400*0.7) can = true;
     
     if(charge >= size) {
       charge = 0;
@@ -152,7 +152,7 @@ class elecwiz {
     
     pushMatrix();
     translate(x,y);
-    scale(1);
+    scale(0.7);
     rotate(atan2(mouseY-y,mouseX-x)+radians(90 + side));
     strokeWeight(7);
     fill(yellow);

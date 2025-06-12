@@ -20,6 +20,7 @@ class ice {
     noStroke();
     pushMatrix();
     translate(wherex,wherey);
+    scale(0.7);
     rotate(rot);
     circle(0,-80 -dist, size);
     popMatrix();
