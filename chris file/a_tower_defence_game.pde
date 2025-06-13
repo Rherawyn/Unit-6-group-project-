@@ -31,6 +31,8 @@ ArrayList<icewiz> icewizardclass;
 ArrayList<elecwiz> elecwizardclass;
 ArrayList<ice> icebulletclass;
 ArrayList<sword> swordguyclass;
+ArrayList<sniper> sniperguyclass;
+ArrayList<farm> farmfarmclass;
 
 void setup() {
   size(1400,900);
@@ -48,6 +50,8 @@ void setup() {
   elecwizardclass = new ArrayList<elecwiz>();
   icebulletclass = new ArrayList<ice>();
   swordguyclass = new ArrayList<sword>();
+  sniperguyclass = new ArrayList<sniper>();
+  farmfarmclass = new ArrayList<farm>();
   
 }
 

@@ -188,3 +188,35 @@ class sword {
     
   }
 }
+
+
+
+class sniper {
+  float x,y;
+  
+  sniper() {
+    x = mouseX;
+    y = mouseY;
+  }
+  
+  void act() {
+    
+    
+  }
+}
+
+
+
+class farm {
+  float x,y;
+  
+  farm() {
+    x = mouseX;
+    y = mouseY;
+  }
+  
+  void act() {
+    
+    
+  }
+}
