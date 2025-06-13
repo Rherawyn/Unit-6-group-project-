@@ -2,7 +2,7 @@ void game() {
   background(white);
   strokeWeight(7); //purchase menu outline
   gameMap();
-  normalCat(1000,500);
+  //normalCat(1000,500);
   squareCat(1000,650);
   moab(1000,800);
   rollCat(1000,300);
@@ -59,31 +59,17 @@ void game() {
   }
   triangle(1233,830, 1233,850, 1247,840);
   triangle(1253,830, 1253,850, 1267,840);
+  
+  
+  for (normcat anEnemy : normalcatclass) {
+    anEnemy.act();
+  }
+  
 }
 
-void normalCat(int x, int y) {
-  pushMatrix();
-  translate(x, y);
-  fill(255);
-  stroke(0);
-  strokeWeight(3);
-  ellipse(0,0, 70,61);
-  triangle(-20,-27, -10,-31, -17,-38);
-  triangle(20,-27, 10,-31, 17,-38);
-  triangle(-20,26, -15,28, -18,30);
-  triangle(20,26, 15,28, 18,30);
-  noFill();
-  ellipse(-2,-8, 14,10);
-  ellipse(8,-8, 14,10);
-  fill(255);
-  stroke(255);
-  ellipse(5,-15, 45,10);
-  stroke(0);
-  fill(0);
-  circle(-11,-15, 2); //eyes
-  circle(15,-13, 2);
-  popMatrix();
-}
+//void normalCat(int x, int y) {
+  
+//}
 
 void squareCat(int x, int y) {
   pushMatrix();
@@ -239,10 +225,18 @@ void gameMouseDragged() {
 }
 
 void gameMouseReleased() {
- 
+  
 }
 
-void gameKeyPressed() {
+void gameKeyPressed() { 
+  if (key == 'a') { //remove enemy
+    normcat anEnemy = normalcatclass.get(0);
+    normalcatclass.remove(anEnemy);
+  }
+  
+  if (key == 'z') { //spawn enemy
+    normalcatclass.add(new normcat());
+  }
 }
   
 
