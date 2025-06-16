@@ -1,5 +1,6 @@
 class normcat {
   float x, y, enemyHealth;
+  int w = 30;
   normcat() {
     x = mouseX;
     y = mouseY;
@@ -14,8 +15,8 @@ class normcat {
     ellipse(0,0, 70,61);
     triangle(-20,-27, -10,-31, -17,-38);
     triangle(20,-27, 10,-31, 17,-38);
-    triangle(-20,26, -15,28, -18,30);
-    triangle(20,26, 15,28, 18,30);
+    triangle(-20,26, -15,28, -18,w);
+    triangle(20,26, 15,28, 18,w);
     noFill();
     ellipse(-2,-8, 14,10);
     ellipse(8,-8, 14,10);
@@ -26,6 +27,13 @@ class normcat {
     fill(0);
     circle(-11,-15, 2); //eyes
     circle(15,-13, 2);
+    
+    wTimer += 1;
+    
+    if (wTimer >= 0 && wTimer <= 20) w = 30;
+    if (wTimer > 20 && wTimer <= 40) w = 33;
+    if (wTimer == 40) wTimer = 0;
+    
     popMatrix();
   }
 }
@@ -33,6 +41,7 @@ class normcat {
 
 class squarecat {
   float x, y, enemyHealth;
+  int w = 30;
   squarecat() {
     x = mouseX;
     y = mouseY;
@@ -47,8 +56,8 @@ class squarecat {
     rect(-35,-30, 70,53);
     triangle(-20,-30, -10,-30, -17,-38);
     triangle(20,-30, 10,-30, 17,-38);
-    triangle(-20,26, -15,26, -18,30);
-    triangle(20,26, 15,26, 18,30);
+    triangle(-20,26, -15,26, -18,w);
+    triangle(20,26, 15,26, 18,w);
     noFill();
     ellipse(-2,-8, 14,10);
     ellipse(8,-8, 14,10);
@@ -66,6 +75,7 @@ class squarecat {
 
 class moab {
   float x, y, enemyHealth;
+  int w = 30;
   moab() {
     x = mouseX;
     y = mouseY;
@@ -93,8 +103,8 @@ class moab {
     fill(255);
     triangle(-20,-27, -10,-31, -17,-38);
     triangle(20,-27, 10,-31, 17,-38);
-    triangle(-20,28, -15,30, -18,32);
-    triangle(20,28, 15,30, 18,32);
+    triangle(-20,28, -15,30, -18,w+2);
+    triangle(20,28, 15,30, 18,w+2);
     popMatrix();
   }
 }
@@ -133,6 +143,7 @@ class rollcat {
 
 class mediccat {
   float x, y, enemyHealth;
+  int w = 30;
   mediccat() {
     x = mouseX;
     y = mouseY;
@@ -162,8 +173,8 @@ class mediccat {
     stroke(0);
     strokeWeight(3);
     ellipse(0,0, 70,61);
-    triangle(-20,26, -15,28, -18,30); //legs
-    triangle(20,26, 15,28, 18,30);
+    triangle(-20,26, -15,28, -18,w); //legs
+    triangle(20,26, 15,28, 18,w);
     noFill();
     ellipse(-2,-8, 14,10);
     ellipse(8,-8, 14,10);

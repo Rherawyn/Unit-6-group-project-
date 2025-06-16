@@ -44,6 +44,7 @@ ArrayList<mediccat> mediccatclass;
 
 //enemies
 int heal = 0;
+int wTimer = 0;
 
 
 void setup() {
