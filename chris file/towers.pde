@@ -184,8 +184,19 @@ class sword {
   }
   
   void act() {
-    
-    
+    pushMatrix();
+    translate(x,y);
+    scale(0.7);
+    rotate(atan2(mouseY-y,mouseX-x)+radians(90));
+    strokeWeight(7);
+    stroke(black);
+    fill(200);
+    circle(0,0, 100);
+    fill(200);
+    circle(0,10, 40);
+    fill(255);
+    rect(-20,-30, 40,10, 50, 50, 0, 0);
+    popMatrix();
   }
 }
 
@@ -200,8 +211,15 @@ class sniper {
   }
   
   void act() {
-    
-    
+    pushMatrix();
+    translate(x,y);
+    scale(0.7);
+    rotate(atan2(mouseY-y,mouseX-x)+radians(90));
+    strokeWeight(7);
+    stroke(black);
+    fill(200);
+    circle(0,0, 100);
+    popMatrix();
   }
 }
 
@@ -216,7 +234,29 @@ class farm {
   }
   
   void act() {
-    
-    
+    pushMatrix();
+    translate(x,y);
+    scale(0.7);
+    strokeWeight(7);
+    textAlign(CENTER, CENTER);
+    for(int i = 0; i<5; i++) {
+      fill(150);
+      noStroke();
+      quad(-10,-70, 10,-70, 12,-50, -12,-50);
+      //quad();
+      noFill();
+      stroke(black);
+      line(-10, -70, 10, -70);
+      arc(-30,-60, 40,40, radians(-30),radians(35));
+      arc(30,-60, 40,40, radians(145),radians(210));
+      rotate(radians(360/5));
+    }
+    stroke(black);
+    fill(150);
+    circle(0,0, 100);
+    textSize(70);
+    fill(black);
+    text("$", 0,-5);
+    popMatrix();
   }
 }

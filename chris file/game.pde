@@ -6,7 +6,7 @@ void game() {
   //println(icebulletclass.size());
   //println(elecwizardclass.size());
   //println(pointerclass.size());
-  println(firewizardclass.size() + icewizardclass.size() + elecwizardclass.size());
+  println(firewizardclass.size() + icewizardclass.size() + elecwizardclass.size() + swordguyclass.size() + sniperguyclass.size() + farmfarmclass.size());
   
   
   
@@ -53,6 +53,21 @@ void game() {
   for(elecwiz aWiz : elecwizardclass){
     aWiz.act();
     if(dist(aWiz.x,aWiz.y, mouseX,mouseY) < 100) placeable = false;
+  }
+  
+  for(sword aSword : swordguyclass){
+    aSword.act();
+    if(dist(aSword.x,aSword.y, mouseX,mouseY) < 100) placeable = false;
+  }
+  
+  for(sniper aSniper : sniperguyclass){
+    aSniper.act();
+    if(dist(aSniper.x,aSniper.y, mouseX,mouseY) < 100) placeable = false;
+  }
+  
+  for(farm aFarm : farmfarmclass){
+    aFarm.act();
+    if(dist(aFarm.x,aFarm.y, mouseX,mouseY) < 100) placeable = false;
   }
   
   for(int i = icebulletclass.size()-1; i >= 0; i--) {
@@ -110,8 +125,26 @@ void game() {
       circle(0,27, 20);
       
     } else if(tower == "sword") {
-      placementCircle(200);
+      placementCircle(400);
+      stroke(black);
+      fill(200);
+      circle(0,0, 100);
+      fill(200);
+      circle(0,10, 40);
+      fill(255);
+      rect(-20,-30, 40,10, 50, 50, 0, 0);
       
+    } else if(tower == "sniper") {
+      placementCircle(10000);
+      stroke(black);
+      fill(200);
+      circle(0,0, 100);
+    } else {
+      placementCircle(110);
+      rotate(radians(-90));
+      stroke(black);
+      fill(200);
+      circle(0,0, 100);
     }
     popMatrix();
   }
@@ -143,6 +176,9 @@ void gameMouseReleased() {
       if(tower == "fire") firewizardclass.add(new firewiz());
       if(tower == "ice") icewizardclass.add(new icewiz());
       if(tower == "elec") elecwizardclass.add(new elecwiz());
+      if(tower == "sword") swordguyclass.add(new sword());
+      if(tower == "sniper") sniperguyclass.add(new sniper());
+      if(tower == "farm") farmfarmclass.add(new farm());
     }
     towerThingHeld = false;
   }
@@ -153,6 +189,8 @@ void gameKeyPressed() {
   if(key == '2' || key == '@') tower = "ice";
   if(key == '3' || key == '#') tower = "elec";
   if(key == '4' || key == '$') tower = "sword";
+  if(key == '5' || key == '%') tower = "sniper";
+  if(key == '6' || key == '^') tower = "farm";
 }
 
 void gameKeyReleased() {
