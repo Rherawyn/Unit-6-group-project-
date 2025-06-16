@@ -35,6 +35,17 @@ boolean buyPhase = true;
 boolean roundPhase = false;
 
 
+ArrayList<normcat> normalcatclass;
+ArrayList<squarecat> squarecatclass;
+ArrayList<moab> moabclass;
+ArrayList<rollcat> rollcatclass;
+ArrayList<mediccat> mediccatclass;
+
+
+//enemies
+int heal = 0;
+
+
 void setup() {
   size(1400,900);
   colorMode(HSB);
@@ -46,6 +57,14 @@ void setup() {
   
   x = width/2;
   y = height/2;
+  
+  
+  normalcatclass = new ArrayList<normcat>();
+  squarecatclass = new ArrayList<squarecat>();
+  moabclass = new ArrayList<moab>();
+  rollcatclass = new ArrayList<rollcat>();
+  mediccatclass = new ArrayList<mediccat>();
+  
 }
 
 void draw() {
