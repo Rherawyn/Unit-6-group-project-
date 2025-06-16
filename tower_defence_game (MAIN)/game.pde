@@ -75,32 +75,38 @@ void game() {
     anEnemy.act();
   }
   
+  for(int i = normalcatclass.size()-1; i >= 0; i--) {
+   normcat anEnemy = normalcatclass.get(i);
+   
+   if(anEnemy.isDead == true) normalcatclass.remove(anEnemy);
+  }
+  
+  for(int i = squarecatclass.size()-1; i >= 0; i--) {
+   squarecat anEnemy = squarecatclass.get(i);
+   
+   if(anEnemy.isDead == true) squarecatclass.remove(anEnemy);
+  }
+  
+  for(int i = moabclass.size()-1; i >= 0; i--) {
+   moab anEnemy = moabclass.get(i);
+   
+   if(anEnemy.isDead == true) moabclass.remove(anEnemy);
+  }
+  
+  for(int i = rollcatclass.size()-1; i >= 0; i--) {
+   rollcat anEnemy = rollcatclass.get(i);
+   
+   if(anEnemy.isDead == true) rollcatclass.remove(anEnemy);
+  }
+  
+  for(int i = mediccatclass.size()-1; i >= 0; i--) {
+   mediccat anEnemy = mediccatclass.get(i);
+   
+   if(anEnemy.isDead == true) mediccatclass.remove(anEnemy);
+  }
+  
   
 }
-
-
-
-
-
-//void normalCat(int x, int y) {
-  
-//}
-
-//void squareCat(int x, int y) {
-  
-//}
-
-//void moab(int x, int y) {
-
-//}
-
-//void rollCat(int x, int y) {
-
-//}
-
-//void medicCat(int x, int y) {
-
-//}
 
 
 void tactile(int x, int y, int r) {
@@ -137,49 +143,49 @@ void gameMouseReleased() {
 }
 
 void gameKeyPressed() {
-  if (key == 'a') { //remove enemy
-    normcat anEnemy = normalcatclass.get(0);
-    normalcatclass.remove(anEnemy);
-  }
+  //if (key == 'a') { //remove enemy
+  //  normcat anEnemy = normalcatclass.get(0);
+  //  normalcatclass.remove(anEnemy);
+  //}
   
-  if (key == 's') {
-    squarecat anEnemy = squarecatclass.get(0);
-    squarecatclass.remove(anEnemy);
-  }
+  //if (key == 's') {
+  //  squarecat anEnemy = squarecatclass.get(0);
+  //  squarecatclass.remove(anEnemy);
+  //}
   
-  if (key == 'd') {
-    moab anEnemy = moabclass.get(0);
-    moabclass.remove(anEnemy);
-  }
+  //if (key == 'd') {
+  //  moab anEnemy = moabclass.get(0);
+  //  moabclass.remove(anEnemy);
+  //}
   
-  if (key == 'f') {
-    rollcat anEnemy = rollcatclass.get(0);
-    rollcatclass.remove(anEnemy);
-  }
+  //if (key == 'f') {
+  //  rollcat anEnemy = rollcatclass.get(0);
+  //  rollcatclass.remove(anEnemy);
+  //}
   
-  if (key == 'g') {
-    mediccat anEnemy = mediccatclass.get(0);
-    mediccatclass.remove(anEnemy);
-  }
-  
-  
+  //if (key == 'g') {
+  //  mediccat anEnemy = mediccatclass.get(0);
+  //  mediccatclass.remove(anEnemy);
+  //}
   
   
-  if (key == 'z') { //spawn enemy
-    normalcatclass.add(new normcat());
-  }
-  if (key == 'x') {
-    squarecatclass.add(new squarecat());
-  }
-  if (key == 'c') { 
-    moabclass.add(new moab());
-  }
-  if (key == 'v') {
-    rollcatclass.add(new rollcat());
-  }
-  if (key == 'b') {
-    mediccatclass.add(new mediccat());
-  }
+  
+  
+  //if (key == 'z') { //spawn enemy
+  //  normalcatclass.add(new normcat());
+  //}
+  //if (key == 'x') {
+  //  squarecatclass.add(new squarecat());
+  //}
+  //if (key == 'c') { 
+  //  moabclass.add(new moab());
+  //}
+  //if (key == 'v') {
+  //  rollcatclass.add(new rollcat());
+  //}
+  //if (key == 'b') {
+  //  mediccatclass.add(new mediccat());
+  //}
 }
   
 
