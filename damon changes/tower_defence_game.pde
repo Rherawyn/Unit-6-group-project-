@@ -1,6 +1,6 @@
 //Tower Defence
 //Gabriel Somthing, Christopher Bennett, Damon Chan
-String mode = "game";
+String mode = "intro";
 
 //set colour
 color red = #F94144;
@@ -22,12 +22,28 @@ float b = 255;
 float x = width/2;
 float y = height/2;
 
+//array vars
+float[] lx;
+float[] ly;
+int ln;
+
 int health = 100;
 int cash = 0;
 int price;
 boolean speedup = false;
 boolean buyPhase = true;
 boolean roundPhase = false;
+
+
+ArrayList<normcat> normalcatclass;
+ArrayList<squarecat> squarecatclass;
+ArrayList<moab> moabclass;
+ArrayList<rollcat> rollcatclass;
+ArrayList<mediccat> mediccatclass;
+
+
+//enemies
+int heal = 0;
 
 
 void setup() {
@@ -41,6 +57,14 @@ void setup() {
   
   x = width/2;
   y = height/2;
+  
+  
+  normalcatclass = new ArrayList<normcat>();
+  squarecatclass = new ArrayList<squarecat>();
+  moabclass = new ArrayList<moab>();
+  rollcatclass = new ArrayList<rollcat>();
+  mediccatclass = new ArrayList<mediccat>();
+  
 }
 
 void draw() {
@@ -48,5 +72,6 @@ void draw() {
   else if(mode == "intro") intro();
   else if(mode == "options") options();
   else if(mode == "gameover") gameover();
+  else if(mode == "options2") options2();
   else pause();
 }

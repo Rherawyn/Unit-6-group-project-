@@ -2,11 +2,6 @@ void game() {
   background(white);
   strokeWeight(7); //purchase menu outline
   gameMap();
-  //normalCat(1000,500);
-  squareCat(1000,650);
-  moab(1000,800);
-  rollCat(1000,300);
-  medicCat(1000,100);
   stroke(#332000);
   fill(#704700); //brown
   strokeWeight(5);
@@ -60,139 +55,52 @@ void game() {
   triangle(1233,830, 1233,850, 1247,840);
   triangle(1253,830, 1253,850, 1267,840);
   
-  
   for (normcat anEnemy : normalcatclass) {
     anEnemy.act();
   }
   
+  for (squarecat anEnemy : squarecatclass) {
+    anEnemy.act();
+  }
+  
+  for (moab anEnemy : moabclass) {
+    anEnemy.act();
+  }
+  
+  for (rollcat anEnemy : rollcatclass) {
+    anEnemy.act();
+  }
+  
+  for (mediccat anEnemy : mediccatclass) {
+    anEnemy.act();
+  }
+  
+  
 }
+
+
+
+
 
 //void normalCat(int x, int y) {
   
 //}
 
-void squareCat(int x, int y) {
-  pushMatrix();
-  translate(x, y);
-  fill(255);
-  stroke(0);
-  strokeWeight(3);
-  rect(-35,-30, 70,53);
-  triangle(-20,-30, -10,-30, -17,-38);
-  triangle(20,-30, 10,-30, 17,-38);
-  triangle(-20,26, -15,26, -18,30);
-  triangle(20,26, 15,26, 18,30);
-  noFill();
-  ellipse(-2,-8, 14,10);
-  ellipse(8,-8, 14,10);
-  fill(255);
-  stroke(255);
-  ellipse(5,-15, 45,10);
-  stroke(0);
-  fill(0);
-  circle(-11,-15, 2); //eyes
-  circle(15,-13, 2);
-  popMatrix();
-}
-
-void moab(int x, int y) {
-  pushMatrix();
-  translate(x,y);
-  fill(255);
-  stroke(0);
-  strokeWeight(3);
-  ellipse(0,0, 140,130);
-  noFill();
-  ellipse(-2,-8, 14,10);
-  ellipse(8,-8, 14,10);
-  fill(255);
-  stroke(255);
-  ellipse(5,-15, 45,10);
-  stroke(0);
-  fill(0);
-  circle(-11,-15, 2); //eyes
-  circle(15,-13, 2);
-  scale(2);
-  strokeWeight(1.5);
-  fill(255);
-  triangle(-20,-27, -10,-31, -17,-38);
-  triangle(20,-27, 10,-31, 17,-38);
-  triangle(-20,28, -15,30, -18,32);
-  triangle(20,28, 15,30, 18,32);
-  popMatrix();
-}
-
-void rollCat(int x, int y) {
-  pushMatrix();
-  translate(x, y);
-  fill(0);
-  stroke(255);
-  strokeWeight(3);
-  ellipse(0,0, 70,61);
-  noFill();
-  ellipse(-2,-8, 14,10);
-  ellipse(8,-8, 14,10);
-  fill(0);
-  stroke(0);
-  ellipse(5,-15, 45,10);
-  stroke(255);
-  fill(255);
-  circle(-11,-15, 2); //eyes
-  circle(15,-13, 2);
-  fill(0);
-  triangle(-23,-27, -7,-31, -17,-42);
-  triangle(23,-27, 7,-31, 17,-42);
-  popMatrix();
-}
-
-void medicCat(int x, int y) {
-  pushMatrix();
-  translate(x, y);
-  fill(255); //hat
-  stroke(0);
-  strokeWeight(3);
-  line(-20,-26, -25,-50);
-  line(20,-26, 25,-50);
-  quad(-20,-26, 20,-26, 12,-56, -12,-56);
-  noFill();
-  arc(0,-50, 50, 10, radians(-40), radians(220));
-  line(-19,-47, -20,-53);
-  line(19,-47, 20,-53);
-  fill(255);
-  quad(-20,-26, 20,-26, 25,-47, -25,-47);
-  fill(#DE6565);
-  noStroke();
-  rect(-3,-42, 6,8);
-  rect(-7,-40, 14,3.5);
-
-  fill(255);
-  stroke(0);
-  strokeWeight(3);
-  ellipse(0,0, 70,61);
-  triangle(-20,26, -15,28, -18,30); //legs
-  triangle(20,26, 15,28, 18,30);
-  noFill();
-  ellipse(-2,-8, 14,10);
-  ellipse(8,-8, 14,10);
-  fill(255);
-  stroke(255);
-  ellipse(5,-15, 45,10);
-  stroke(0);
-  fill(0);
-  circle(-11,-15, 2); //eyes
-  circle(15,-13, 2);
+//void squareCat(int x, int y) {
   
-  heal += 1;
+//}
 
-  if (heal >= 120 && heal <= 160) {
-    stroke(#009312);
-    fill(#00C418, 100);
-    ellipse(0,0, 250,250);
-  }
-  if (heal == 160) heal = 0;
-  popMatrix();
-}
+//void moab(int x, int y) {
 
+//}
+
+//void rollCat(int x, int y) {
+
+//}
+
+//void medicCat(int x, int y) {
+
+//}
 
 
 void tactile(int x, int y, int r) {
@@ -225,17 +133,52 @@ void gameMouseDragged() {
 }
 
 void gameMouseReleased() {
-  
+ 
 }
 
-void gameKeyPressed() { 
+void gameKeyPressed() {
   if (key == 'a') { //remove enemy
     normcat anEnemy = normalcatclass.get(0);
     normalcatclass.remove(anEnemy);
   }
   
+  if (key == 's') {
+    squarecat anEnemy = squarecatclass.get(0);
+    squarecatclass.remove(anEnemy);
+  }
+  
+  if (key == 'd') {
+    moab anEnemy = moabclass.get(0);
+    moabclass.remove(anEnemy);
+  }
+  
+  if (key == 'f') {
+    rollcat anEnemy = rollcatclass.get(0);
+    rollcatclass.remove(anEnemy);
+  }
+  
+  if (key == 'g') {
+    mediccat anEnemy = mediccatclass.get(0);
+    mediccatclass.remove(anEnemy);
+  }
+  
+  
+  
+  
   if (key == 'z') { //spawn enemy
     normalcatclass.add(new normcat());
+  }
+  if (key == 'x') {
+    squarecatclass.add(new squarecat());
+  }
+  if (key == 'c') { 
+    moabclass.add(new moab());
+  }
+  if (key == 'v') {
+    rollcatclass.add(new rollcat());
+  }
+  if (key == 'b') {
+    mediccatclass.add(new mediccat());
   }
 }
   
