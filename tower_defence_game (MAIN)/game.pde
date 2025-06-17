@@ -55,57 +55,7 @@ void game() {
   triangle(1233,830, 1233,850, 1247,840);
   triangle(1253,830, 1253,850, 1267,840);
   
-  for (normcat anEnemy : normalcatclass) {
-    anEnemy.act();
-  }
-  
-  for (squarecat anEnemy : squarecatclass) {
-    anEnemy.act();
-  }
-  
-  for (moab anEnemy : moabclass) {
-    anEnemy.act();
-  }
-  
-  for (rollcat anEnemy : rollcatclass) {
-    anEnemy.act();
-  }
-  
-  for (mediccat anEnemy : mediccatclass) {
-    anEnemy.act();
-  }
-  
-  for(int i = normalcatclass.size()-1; i >= 0; i--) {
-   normcat anEnemy = normalcatclass.get(i);
-   
-   if(anEnemy.isDead == true) normalcatclass.remove(anEnemy);
-  }
-  
-  for(int i = squarecatclass.size()-1; i >= 0; i--) {
-   squarecat anEnemy = squarecatclass.get(i);
-   
-   if(anEnemy.isDead == true) squarecatclass.remove(anEnemy);
-  }
-  
-  for(int i = moabclass.size()-1; i >= 0; i--) {
-   moab anEnemy = moabclass.get(i);
-   
-   if(anEnemy.isDead == true) moabclass.remove(anEnemy);
-  }
-  
-  for(int i = rollcatclass.size()-1; i >= 0; i--) {
-   rollcat anEnemy = rollcatclass.get(i);
-   
-   if(anEnemy.isDead == true) rollcatclass.remove(anEnemy);
-  }
-  
-  for(int i = mediccatclass.size()-1; i >= 0; i--) {
-   mediccat anEnemy = mediccatclass.get(i);
-   
-   if(anEnemy.isDead == true) mediccatclass.remove(anEnemy);
-  }
-  
-  
+  gamePlay();
 }
 
 
@@ -143,10 +93,10 @@ void gameMouseReleased() {
 }
 
 void gameKeyPressed() {
-  //if (key == 'a') { //remove enemy
-  //  normcat anEnemy = normalcatclass.get(0);
-  //  normalcatclass.remove(anEnemy);
-  //}
+  if (key == 'a') { //remove enemy
+    normcat anEnemy = normalcatclass.get(0);
+    normalcatclass.remove(anEnemy);
+  }
   
   //if (key == 's') {
   //  squarecat anEnemy = squarecatclass.get(0);
@@ -171,9 +121,9 @@ void gameKeyPressed() {
   
   
   
-  //if (key == 'z') { //spawn enemy
-  //  normalcatclass.add(new normcat());
-  //}
+  if (key == 'z') { //spawn enemy
+    normalcatclass.add(new normcat());
+  }
   //if (key == 'x') {
   //  squarecatclass.add(new squarecat());
   //}
@@ -199,17 +149,4 @@ void gameMap() {
  line (lx[i],ly[i],lx[i+1],ly[i+1]);
  i ++;
   }
-}
-
-void fireWizard() {
-  pushMatrix();
-  translate(x,y);
-  scale(2);
-  rotate(atan2(mouseY-y,mouseX-x)+PI/2);
-  //rotate(radians(mouseY));
-  circle(0,0, 100);
-  circle(0,10, 60);
-  circle(0,15, 30);
-  circle(0,27, 20);
-  popMatrix();
 }

@@ -1,12 +1,15 @@
 class normcat {
-  float x, y, enemyHealth;
+  int i = 1;
+  float x = lx[1];
+  float y = ly[1];
+  float enemyHealth;
   boolean isDead = false;
   normcat() {
-    x = mouseX;
-    y = mouseY;
     enemyHealth = 5;
   }
   void act() {
+    x = x + cx[i];
+    y = y + cy[i];
     pushMatrix();
     translate(x, y);
     fill(255);
@@ -29,6 +32,10 @@ class normcat {
     circle(15, -13, 2);
     popMatrix();
 
+    if(x == lx[i+1] && y == ly[i+1]){
+      i ++;
+    }
+
     if (enemyHealth <= 0) {
       isDead = true;
     }
@@ -37,11 +44,12 @@ class normcat {
 
 
 class squarecat {
+  int i = 1;
   float x, y, enemyHealth;
   boolean isDead = false;
   squarecat() {
-    x = mouseX;
-    y = mouseY;
+    x = cx[i];
+    y = cy[i];
     enemyHealth = 20;
   }
   void act() {
@@ -66,6 +74,10 @@ class squarecat {
     circle(-11, -15, 2); //eyes
     circle(15, -13, 2);
     popMatrix();
+    
+    if(x == lx[i] && y == ly[i]){
+      i ++;
+    }
 
     if (enemyHealth <= 0) {
       isDead = true;
@@ -75,11 +87,12 @@ class squarecat {
 
 
 class moab {
+  int i = 1;
   float x, y, enemyHealth;
   boolean isDead = false;
   moab() {
-    x = mouseX;
-    y = mouseY;
+    x = cx[i];
+    y = cy[i];
     enemyHealth = 100;
   }
   void act() {
@@ -107,6 +120,10 @@ class moab {
     triangle(-20, 28, -15, 30, -18, 32);
     triangle(20, 28, 15, 30, 18, 32);
     popMatrix();
+    
+    if(x == lx[i] && y == ly[i]){
+      i ++;
+    }
 
     if (enemyHealth <= 0) {
       isDead = true;
@@ -115,11 +132,12 @@ class moab {
 }
 
 class rollcat {
+  int i = 1;
   float x, y, enemyHealth;
   boolean isDead = false;
   rollcat() {
-    x = mouseX;
-    y = mouseY;
+    x = cx[i];
+    y = cy[i];
     enemyHealth = 10;
   }
   void act() {
@@ -143,6 +161,10 @@ class rollcat {
     triangle(-23, -27, -7, -31, -17, -42);
     triangle(23, -27, 7, -31, 17, -42);
     popMatrix();
+    
+    if(x == lx[i] && y == ly[i]){
+      i ++;
+    }
 
     if (enemyHealth <= 0) {
       isDead = true;
@@ -152,11 +174,12 @@ class rollcat {
 
 
 class mediccat {
+  int i = 1;
   float x, y, enemyHealth;
   boolean isDead = false;
   mediccat() {
-    x = mouseX;
-    y = mouseY;
+    x = cx[i];
+    y = cy[i];
     enemyHealth = 15;
   }
   void act() {
@@ -197,6 +220,10 @@ class mediccat {
     circle(15, -13, 2);
 
     heal += 1;
+    
+    if(x == lx[i] && y == ly[i]){
+      i ++;
+    }
 
     if (heal >= 120 && heal <= 160) {
       stroke(#009312);
