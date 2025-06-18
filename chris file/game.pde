@@ -127,12 +127,27 @@ void game() {
     } else if(tower == "sword") {
       placementCircle(400);
       stroke(black);
-      fill(200);
+      fill(50);
       circle(0,0, 100);
-      fill(200);
-      circle(0,10, 40);
-      fill(255);
-      rect(-20,-30, 40,10, 50, 50, 0, 0);
+      noFill();
+      arc(0,5, 70,70, radians(230),radians(310));
+      translate(0,20);
+      fill(red);
+      stroke(red);
+      strokeWeight(2);
+      triangle(0,-20, 15,-10, -15,-10);
+      
+      triangle(0,-15, 20,0, -20,0);
+      triangle(0,-15, 20,0, -20,0);
+      
+      triangle(20,-10, -20,-10, 0,20);
+      
+      triangle(-20,20, 0,20, -10,5);
+      triangle(20,20, 0,20, 10,5);
+      
+      triangle(10,20, -10,20, 0,50);
+      
+      quad(0,30, 10,40, 0,15, -10,40);
       
     } else if(tower == "sniper") {
       placementCircle(10000);
