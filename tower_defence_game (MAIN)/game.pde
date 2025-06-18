@@ -98,25 +98,25 @@ void gameKeyPressed() {
     normalcatclass.remove(anEnemy);
   }
   
-  //if (key == 's') {
-  //  squarecat anEnemy = squarecatclass.get(0);
-  //  squarecatclass.remove(anEnemy);
-  //}
+  if (key == 's') {
+    squarecat anEnemy = squarecatclass.get(0);
+    squarecatclass.remove(anEnemy);
+  }
   
-  //if (key == 'd') {
-  //  moab anEnemy = moabclass.get(0);
-  //  moabclass.remove(anEnemy);
-  //}
+  if (key == 'd') {
+    moab anEnemy = moabclass.get(0);
+    moabclass.remove(anEnemy);
+  }
   
-  //if (key == 'f') {
-  //  rollcat anEnemy = rollcatclass.get(0);
-  //  rollcatclass.remove(anEnemy);
-  //}
+  if (key == 'f') {
+    rollcat anEnemy = rollcatclass.get(0);
+    rollcatclass.remove(anEnemy);
+  }
   
-  //if (key == 'g') {
-  //  mediccat anEnemy = mediccatclass.get(0);
-  //  mediccatclass.remove(anEnemy);
-  //}
+  if (key == 'g') {
+    mediccat anEnemy = mediccatclass.get(0);
+    mediccatclass.remove(anEnemy);
+  }
   
   
   
@@ -124,18 +124,18 @@ void gameKeyPressed() {
   if (key == 'z') { //spawn enemy
     normalcatclass.add(new normcat());
   }
-  //if (key == 'x') {
-  //  squarecatclass.add(new squarecat());
-  //}
-  //if (key == 'c') { 
-  //  moabclass.add(new moab());
-  //}
-  //if (key == 'v') {
-  //  rollcatclass.add(new rollcat());
-  //}
-  //if (key == 'b') {
-  //  mediccatclass.add(new mediccat());
-  //}
+  if (key == 'x') {
+    squarecatclass.add(new squarecat());
+  }
+  if (key == 'c') { 
+    moabclass.add(new moab());
+  }
+  if (key == 'v') {
+    rollcatclass.add(new rollcat());
+  }
+  if (key == 'b') {
+    mediccatclass.add(new mediccat());
+  }
 }
   
 
@@ -144,7 +144,7 @@ void gameKeyReleased() {
 }
 
 void gameMap() {
-  int i = 1;
+  int i = 0;
   while (i < ln-1) {
  line (lx[i],ly[i],lx[i+1],ly[i+1]);
  i ++;

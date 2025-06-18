@@ -1,15 +1,13 @@
 int Mcat, Hcat, Scat, Rcat, Ncat;
-float v[];
 float cx[];
 float cy[];
 int catCoins;
 
 void gamePlay() {
   //ENEMY PATHFINDING
-  for(int i = 1; i < ln-1; i ++) {
-   v[i] = (lx[i+1]-lx[i])/(ly[i+1]-ly[i]);
-   cx[i] = v[i];
-   cy[i] = 1/v[i];
+  for(int i = 0; i < ln-1; i ++) {
+   cx[i] = (lx[i+1]-lx[i])/dist(lx[i],lx[i],lx[i+1],ly[i+1]);
+   cy[i] = (ly[i+1]-ly[i])/dist(lx[i],lx[i],lx[i+1],ly[i+1]);
   }
   
   

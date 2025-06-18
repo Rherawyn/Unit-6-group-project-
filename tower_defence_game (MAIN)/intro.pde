@@ -35,13 +35,12 @@ void introMouseReleased() {
     print("yes");
     //array stuff for map
     if (difficulty) {
-      ln = 6;
+      ln = 5;
     } else {
-      ln = 4;
+      ln = 3;
     }
     lx = new float[ln];
     ly = new float[ln];
-    v = new float[ln];
     cx = new float[ln];
     cy = new float[ln];
 
@@ -55,7 +54,7 @@ void introMouseReleased() {
         ly[i] = random(75, 825);
       }
     }
-    lx[1] = 0;
+    lx[0] = 0;
     lx[ln - 1] = 1300;
     mode = "game";
   }

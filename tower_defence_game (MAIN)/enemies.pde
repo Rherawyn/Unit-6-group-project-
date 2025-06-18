@@ -1,13 +1,17 @@
 class normcat {
-  int i = 1;
-  float x = lx[1];
-  float y = ly[1];
+  int i = 0;
+  float x = lx[0];
+  float y = ly[0];
   float enemyHealth;
   boolean isDead = false;
   normcat() {
     enemyHealth = 5;
   }
   void act() {
+    if(dist(x,y,lx[i],ly[i]) > dist(lx[i],ly[i],lx[i+1],ly[i+1])){
+      i ++;
+      println("yipee");
+    }
     x = x + cx[i];
     y = y + cy[i];
     pushMatrix();
@@ -32,10 +36,6 @@ class normcat {
     circle(15, -13, 2);
     popMatrix();
 
-    if(x == lx[i+1] && y == ly[i+1]){
-      i ++;
-    }
-
     if (enemyHealth <= 0) {
       isDead = true;
     }
@@ -44,8 +44,10 @@ class normcat {
 
 
 class squarecat {
-  int i = 1;
-  float x, y, enemyHealth;
+  int i = 0;
+  float x = lx[0];
+  float y = ly[0];
+  float enemyHealth;
   boolean isDead = false;
   squarecat() {
     x = cx[i];
@@ -53,6 +55,12 @@ class squarecat {
     enemyHealth = 20;
   }
   void act() {
+    if(dist(x,y,lx[i],ly[i]) > dist(lx[i],ly[i],lx[i+1],ly[i+1])){
+      i ++;
+      println("yipee");
+    }
+    x = x + cx[i];
+    y = y + cy[i];
     pushMatrix();
     translate(x, y);
     fill(255);
@@ -74,10 +82,6 @@ class squarecat {
     circle(-11, -15, 2); //eyes
     circle(15, -13, 2);
     popMatrix();
-    
-    if(x == lx[i] && y == ly[i]){
-      i ++;
-    }
 
     if (enemyHealth <= 0) {
       isDead = true;
@@ -87,8 +91,10 @@ class squarecat {
 
 
 class moab {
-  int i = 1;
-  float x, y, enemyHealth;
+  int i = 0;
+  float x = lx[0];
+  float y = ly[0];
+  float enemyHealth;
   boolean isDead = false;
   moab() {
     x = cx[i];
@@ -96,6 +102,12 @@ class moab {
     enemyHealth = 100;
   }
   void act() {
+    if(dist(x,y,lx[i],ly[i]) > dist(lx[i],ly[i],lx[i+1],ly[i+1])){
+      i ++;
+      println("yipee");
+    }
+    x = x + cx[i];
+    y = y + cy[i];
     pushMatrix();
     translate(x, y);
     fill(255);
@@ -120,10 +132,6 @@ class moab {
     triangle(-20, 28, -15, 30, -18, 32);
     triangle(20, 28, 15, 30, 18, 32);
     popMatrix();
-    
-    if(x == lx[i] && y == ly[i]){
-      i ++;
-    }
 
     if (enemyHealth <= 0) {
       isDead = true;
@@ -132,8 +140,10 @@ class moab {
 }
 
 class rollcat {
-  int i = 1;
-  float x, y, enemyHealth;
+  int i = 0;
+  float x = lx[0];
+  float y = ly[0];
+  float enemyHealth;
   boolean isDead = false;
   rollcat() {
     x = cx[i];
@@ -141,6 +151,12 @@ class rollcat {
     enemyHealth = 10;
   }
   void act() {
+    if(dist(x,y,lx[i],ly[i]) > dist(lx[i],ly[i],lx[i+1],ly[i+1])){
+      i ++;
+      println("yipee");
+    }
+    x = x + cx[i];
+    y = y + cy[i];
     pushMatrix();
     translate(x, y);
     fill(0);
@@ -161,10 +177,6 @@ class rollcat {
     triangle(-23, -27, -7, -31, -17, -42);
     triangle(23, -27, 7, -31, 17, -42);
     popMatrix();
-    
-    if(x == lx[i] && y == ly[i]){
-      i ++;
-    }
 
     if (enemyHealth <= 0) {
       isDead = true;
@@ -174,8 +186,10 @@ class rollcat {
 
 
 class mediccat {
-  int i = 1;
-  float x, y, enemyHealth;
+  int i = 0;
+  float x = lx[0];
+  float y = ly[0];
+  float enemyHealth;
   boolean isDead = false;
   mediccat() {
     x = cx[i];
@@ -183,6 +197,12 @@ class mediccat {
     enemyHealth = 15;
   }
   void act() {
+    if(dist(x,y,lx[i],ly[i]) > dist(lx[i],ly[i],lx[i+1],ly[i+1])){
+      i ++;
+      println("yipee");
+    }
+    x = x + cx[i];
+    y = y + cy[i];
     pushMatrix();
     translate(x, y);
     fill(255); //hat
@@ -221,9 +241,6 @@ class mediccat {
 
     heal += 1;
     
-    if(x == lx[i] && y == ly[i]){
-      i ++;
-    }
 
     if (heal >= 120 && heal <= 160) {
       stroke(#009312);
