@@ -32,7 +32,6 @@ void introMouseReleased() {
   }
   //TEMPORARY PERAMITERS FOR BUTTON, NOT FINAL
   if (mouseX > 525 && mouseX < 875 &&  mouseY >350 && mouseY < 550) {
-    print("yes");
     mode = "game";
     //array stuff for map
     if (difficulty) {

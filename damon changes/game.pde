@@ -1,8 +1,17 @@
 void game() {
-  background(white);
-  strokeWeight(7); //purchase menu outline
+  
+  wTimer += 1;
+  if (wTimer == 40) wTimer = 0;
+  heal += 1;
+  if (heal == 160) heal = 0;
+  
+  background(#64A264);
+  strokeWeight(10); //purchase menu outline
+  stroke(#E8CD62);
+  fill(#E8CD62);
   gameMap();
   stroke(#332000);
+  strokeWeight(7);
   fill(#704700); //brown
   strokeWeight(5);
   rect(1200,-10, 210,920);
@@ -77,30 +86,6 @@ void game() {
   
   
 }
-
-
-
-
-
-//void normalCat(int x, int y) {
-  
-//}
-
-//void squareCat(int x, int y) {
-  
-//}
-
-//void moab(int x, int y) {
-
-//}
-
-//void rollCat(int x, int y) {
-
-//}
-
-//void medicCat(int x, int y) {
-
-//}
 
 
 void tactile(int x, int y, int r) {
@@ -190,8 +175,8 @@ void gameKeyReleased() {
 void gameMap() {
   int i = 1;
   while (i < ln-1) {
- line (lx[i],ly[i],lx[i+1],ly[i+1]);
- i ++;
+    line (lx[i],ly[i],lx[i+1],ly[i+1]);
+    i ++;
   }
 }
 
