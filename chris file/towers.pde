@@ -226,11 +226,14 @@ class sniper {
 
 
 class farm {
-  float x,y;
+  float x,y, timer, pick, rot;
   
   farm() {
     x = mouseX;
     y = mouseY;
+    timer = 0;
+    pick = int(random(5));
+    rot = 0;
   }
   
   void act() {
@@ -239,11 +242,17 @@ class farm {
     scale(0.7);
     strokeWeight(7);
     textAlign(CENTER, CENTER);
+    textSize(40);
+    rotate(radians(rot));
     for(int i = 0; i<5; i++) {
+      //fill(black);
+      //if(pick == i) {
+      //  if(rot <= 50) text("$", 0,-50 - rot);
+      //  if(rot > 50) text("$", 0,-100);
+      //}
       fill(150);
       noStroke();
       quad(-10,-70, 10,-70, 12,-50, -12,-50);
-      //quad();
       noFill();
       stroke(black);
       line(-10, -70, 10, -70);
@@ -255,8 +264,16 @@ class farm {
     fill(150);
     circle(0,0, 100);
     textSize(70);
-    fill(black);
+    fill(100, 200, rot);
     text("$", 0,-5);
     popMatrix();
+    //timer += 2;
+    //if(timer >= 150) {
+    //  timer = 0;
+    //  pick = int(random(5));
+    //}
+    if (rot > 360) rot = 0;
+    rot += 0.01;
+    rot *= 1.03;
   }
 }

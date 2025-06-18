@@ -6,7 +6,7 @@ void game() {
   //println(icebulletclass.size());
   //println(elecwizardclass.size());
   //println(pointerclass.size());
-  println(firewizardclass.size() + icewizardclass.size() + elecwizardclass.size() + swordguyclass.size() + sniperguyclass.size() + farmfarmclass.size());
+  //println(firewizardclass.size() + icewizardclass.size() + elecwizardclass.size() + swordguyclass.size() + sniperguyclass.size() + farmfarmclass.size());
   
   
   
