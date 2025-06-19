@@ -1,6 +1,7 @@
 //Tower Defence
 //Gabriel Somthing, Christopher Bennett, Damon Chan
 String mode = "intro";
+String tower = "fire";
 
 //set colour
 color red = #F94144;
@@ -15,6 +16,8 @@ color navy = #577590;
 color blue = #277DA1;
 color black = 0;
 color white = 255;
+color brown = #49311d;
+color pink = #FF8DA1;
 float background = 100;
 float s = 120;
 float b = 255;
@@ -41,11 +44,22 @@ ArrayList<moab> moabclass;
 ArrayList<rollcat> rollcatclass;
 ArrayList<mediccat> mediccatclass;
 
+//Chris var.
+boolean towerThingHeld = false;
+boolean placeable = false;
+ArrayList<pointer> pointerclass;
+ArrayList<firewiz> firewizardclass;
+ArrayList<icewiz> icewizardclass;
+ArrayList<elecwiz> elecwizardclass;
+ArrayList<ice> icebulletclass;
+ArrayList<sword> swordguyclass;
+ArrayList<sniper> sniperguyclass;
+ArrayList<farm> farmfarmclass;
+
 
 //enemies
 int heal = 0;
 int wTimer = 0;
-
 
 void setup() {
   size(1400,900);
@@ -65,6 +79,16 @@ void setup() {
   moabclass = new ArrayList<moab>();
   rollcatclass = new ArrayList<rollcat>();
   mediccatclass = new ArrayList<mediccat>();
+  
+  //Chris var. setup
+  pointerclass = new ArrayList<pointer>();
+  firewizardclass = new ArrayList<firewiz>();
+  icewizardclass = new ArrayList<icewiz>();
+  elecwizardclass = new ArrayList<elecwiz>();
+  icebulletclass = new ArrayList<ice>();
+  swordguyclass = new ArrayList<sword>();
+  sniperguyclass = new ArrayList<sniper>();
+  farmfarmclass = new ArrayList<farm>();
   
 }
 
