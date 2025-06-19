@@ -1,4 +1,10 @@
 void game() {
+  
+  wTimer += 1;
+  if (wTimer == 40) wTimer = 0;
+  heal += 1;
+  if (heal == 160) heal = 0;
+  
   background(white);
   strokeWeight(7); //purchase menu outline
   stroke(black);

@@ -59,7 +59,7 @@ ArrayList<farm> farmfarmclass;
 
 //enemies
 int heal = 0;
-
+int wTimer = 0;
 
 void setup() {
   size(1400,900);
