@@ -49,7 +49,6 @@ void game() {
   triangle(1340, 827, 1340, 853, 1363, 840);
 
   tactile(1125, 70, 40); //pause button
-  stroke(#0489D8);
   fill(#39B4FF);
   circle(1125, 70, 70);
   fill(#0489D8);
