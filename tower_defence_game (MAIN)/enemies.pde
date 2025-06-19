@@ -13,7 +13,7 @@ class normcat {
     enemyHealth = 5;
   }
   void act() {
-    if(dist(x,y,lx[i],ly[i]) > dist(lx[i],ly[i],lx[i+1],ly[i+1])){
+    if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
       i ++;
       println("yipee");
     }
@@ -40,11 +40,11 @@ class normcat {
     circle(-11, -15, 2); //eyes
     circle(15, -13, 2);
     if (blink < 192) {
-      circle(-11,-15, 2); //eyes
-      circle(15,-13, 2);
+      circle(-11, -15, 2); //eyes
+      circle(15, -13, 2);
     } else {
-      line(-13,-15, -9,-15);
-      line(13,-13, 17,-13);
+      line(-13, -15, -9, -15);
+      line(13, -13, 17, -13);
     }
     if (twitch < 300) {
       ear = -38;
@@ -59,7 +59,12 @@ class normcat {
     if (twitch >= 310) twitch = 0;
     popMatrix();
     blink += 1;
-    twitch += random(0,3);
+    twitch += random(0, 3);
+
+    if (x >= 1300) {
+      isDead = true;
+      health -= 5;
+    }
 
     if (enemyHealth <= 0) {
       isDead = true;
@@ -80,12 +85,10 @@ class squarecat {
   int ear = -38;
   boolean isDead = false;
   squarecat() {
-    x = cx[i];
-    y = cy[i];
     enemyHealth = 20;
   }
   void act() {
-    if(dist(x,y,lx[i],ly[i]) > dist(lx[i],ly[i],lx[i+1],ly[i+1])){
+    if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
       i ++;
       println("yipee");
     }
@@ -110,11 +113,11 @@ class squarecat {
     stroke(0);
     fill(0);
     if (blink < 192) {
-      circle(-11,-15, 2); //eyes
-      circle(15,-13, 2);
+      circle(-11, -15, 2); //eyes
+      circle(15, -13, 2);
     } else {
-      line(-13,-15, -9,-15);
-      line(13,-13, 17,-13);
+      line(-13, -15, -9, -15);
+      line(13, -13, 17, -13);
     }
     if (twitch < 300) {
       ear = -38;
@@ -129,7 +132,12 @@ class squarecat {
     if (twitch >= 310) twitch = 0;
     popMatrix();
     blink += 1;
-    twitch += random(0,3);
+    twitch += random(0, 3);
+
+    if (x >= 1300) {
+      isDead = true;
+      health -= 15;
+    }
 
     if (enemyHealth <= 0) {
       isDead = true;
@@ -150,17 +158,15 @@ class moab {
   int ear = -38;
   boolean isDead = false;
   moab() {
-    x = cx[i];
-    y = cy[i];
     enemyHealth = 100;
   }
   void act() {
-    if(dist(x,y,lx[i],ly[i]) > dist(lx[i],ly[i],lx[i+1],ly[i+1])){
+    if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
       i ++;
       println("yipee");
     }
-    x = x + cx[i];
-    y = y + cy[i];
+    x = x + (cx[i] * 0.5);
+    y = y + (cy[i] * 0.5);
     pushMatrix();
     translate(x, y);
     fill(255);
@@ -176,11 +182,11 @@ class moab {
     stroke(0);
     fill(0);
     if (blink < 192) {
-      circle(-11,-15, 2); //eyes
-      circle(15,-13, 2);
+      circle(-11, -15, 2); //eyes
+      circle(15, -13, 2);
     } else {
-      line(-13,-15, -9,-15);
-      line(13,-13, 17,-13);
+      line(-13, -15, -9, -15);
+      line(13, -13, 17, -13);
     }
     scale(2);
     strokeWeight(1.5);
@@ -203,7 +209,12 @@ class moab {
     if (twitch >= 310) twitch = 0;
     popMatrix();
     blink += 1;
-    twitch += random(0,3);
+    twitch += random(0, 3);
+
+    if (x >= 1300) {
+      isDead = true;
+      health -= 45;
+    }
 
     if (enemyHealth <= 0) {
       isDead = true;
@@ -222,18 +233,16 @@ class rollcat {
   float angle;
   boolean isDead = false;
   rollcat() {
-    x = cx[i];
-    y = cy[i];
     enemyHealth = 10;
     angle = 0;
   }
   void act() {
-    if(dist(x,y,lx[i],ly[i]) > dist(lx[i],ly[i],lx[i+1],ly[i+1])){
+    if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
       i ++;
       println("yipee");
     }
-    x = x + cx[i];
-    y = y + cy[i];
+    x = x + (cx[i] * 2);
+    y = y + (cy[i] * 2);
     pushMatrix();
     translate(x, y);
     rotate(angle);
@@ -250,11 +259,11 @@ class rollcat {
     stroke(255);
     fill(255);
     if (blink < 192) {
-      circle(-11,-15, 2); //eyes
-      circle(15,-13, 2);
+      circle(-11, -15, 2); //eyes
+      circle(15, -13, 2);
     } else {
-      line(-13,-15, -9,-15);
-      line(13,-13, 17,-13);
+      line(-13, -15, -9, -15);
+      line(13, -13, 17, -13);
     }
     if (twitch < 300) {
       ear = -38;
@@ -262,14 +271,19 @@ class rollcat {
       ear = -35;
     }
     fill(0);
-    triangle(-23,-27, -7,-31, -17,-40);
-    triangle(23,-27, 7,-31, 17,ear-2);
+    triangle(-23, -27, -7, -31, -17, -40);
+    triangle(23, -27, 7, -31, 17, ear-2);
     if (blink == 200) blink = 0;
     if (twitch >= 310) twitch = 0;
     popMatrix();
     angle += 0.09;
     blink += 1;
-    twitch += random(0,3);
+    twitch += random(0, 3);
+
+    if (x >= 1300) {
+      isDead = true;
+      health -= 5;
+    }
 
     if (enemyHealth <= 0) {
       isDead = true;
@@ -288,12 +302,10 @@ class mediccat {
   int blink = 0;
   boolean isDead = false;
   mediccat() {
-    x = cx[i];
-    y = cy[i];
     enemyHealth = 15;
   }
   void act() {
-    if(dist(x,y,lx[i],ly[i]) > dist(lx[i],ly[i],lx[i+1],ly[i+1])){
+    if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
       i ++;
       println("yipee");
     }
@@ -333,25 +345,34 @@ class mediccat {
     stroke(0);
     fill(0);
     if (blink < 192) {
-      circle(-11,-15, 2); //eyes
-      circle(15,-13, 2);
+      circle(-11, -15, 2); //eyes
+      circle(15, -13, 2);
     } else {
-      line(-13,-15, -9,-15);
-      line(13,-13, 17,-13);
+      line(-13, -15, -9, -15);
+      line(13, -13, 17, -13);
     }
-   
+
     if (heal >= 120 && heal <= 160) {
       stroke(#009312);
       fill(#00C418, 100);
-      ellipse(0,0, 250,250);
+      ellipse(0, 0, 250, 250);
     }
     if (wTimer >= 0 && wTimer <= 20) w1 = 30;
     if (wTimer > 20 && wTimer <= 40) w1 = 33;
     if (wTimer >= 0 && wTimer <= 20) w2 = 33;
     if (wTimer > 20 && wTimer <= 40) w2 = 30;
     if (blink == 200) blink = 0;
-    
+
     popMatrix();
     blink += 1;
+
+    if (x >= 1300) {
+      isDead = true;
+      health -= 7;
+    }
+
+    if (enemyHealth <= 0) {
+      isDead = true;
+    }
   }
 }
