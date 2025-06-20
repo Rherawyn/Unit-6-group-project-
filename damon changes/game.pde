@@ -59,9 +59,12 @@ void game() {
   if (speedup == false) {
     fill(#0489D8);
     stroke(#0489D8);
+    frameRate(60);
   } else if (speedup) {
     fill(#62F3FF);
     stroke(#62F3FF);
+    frameRate(120);
+    
   }
   triangle(1233, 830, 1233, 850, 1247, 840);
   triangle(1253, 830, 1253, 850, 1267, 840);
@@ -142,11 +145,29 @@ void game() {
   popMatrix();
 
 
-  //pushMatrix();
-  //translate();
-  //scale(0.6);
-
-  //popMatrix();
+  pushMatrix();
+  translate(1250, 440);
+  scale(0.55);
+  strokeWeight(6);
+  //rotate(radians(-90));
+  for(int i = 0; i<5; i++) {
+    fill(150);
+    noStroke();
+    quad(-10,-70, 10,-70, 12,-50, -12,-50);
+    noFill();
+    stroke(black);
+    line(-10, -70, 10, -70);
+    arc(-30,-60, 40,40, radians(-30),radians(35));
+    arc(30,-60, 40,40, radians(145),radians(210));
+    rotate(radians(360/5));
+  }
+  stroke(black);
+  fill(150);
+  circle(0,0, 100);
+  textSize(70);
+  fill(100, 200, 0);
+  text("$", -18,-5);
+  popMatrix();
 
 
   //Chris jumble gibberish code stuff from this point on :D
