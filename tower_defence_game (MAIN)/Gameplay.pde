@@ -1,7 +1,6 @@
 int Mcat, Hcat, Scat, Rcat, Ncat;
 float cx[];
 float cy[];
-int catCoins;
 
 void gamePlay() {
   //ENEMY PATHFINDING

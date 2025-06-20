@@ -34,6 +34,10 @@ void game() {
   ellipse(1258, 93, 14, 12);
   text(health, 1277, 101);
   
+  if(health <= 0) {
+   mode = "gameover"; 
+  }
+  
   fill(255); //price display
   text("Price: " + price, 1233, 150);
   

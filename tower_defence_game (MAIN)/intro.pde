@@ -56,6 +56,8 @@ void introMouseReleased() {
     }
     lx[0] = 0;
     lx[ln - 1] = 1300;
+    health = 100;
+    rounds = 1;
     mode = "game";
   }
 }
