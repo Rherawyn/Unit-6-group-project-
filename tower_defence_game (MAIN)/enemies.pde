@@ -11,6 +11,8 @@ class normcat {
   boolean isDead = false;
   normcat() {
     enemyHealth = 5;
+    catCoins += -1;
+    cats += 1;
   }
   void act() {
     if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
@@ -50,7 +52,7 @@ class normcat {
       ear = -38;
     } else {
       ear = -35;
-    }
+    } 
     if (wTimer >= 0 && wTimer <= 20) w1 = 30;
     if (wTimer > 20 && wTimer <= 40) w1 = 32;
     if (wTimer >= 0 && wTimer <= 20) w2 = 32;
@@ -64,10 +66,12 @@ class normcat {
     if (x >= 1300) {
       isDead = true;
       health -= 5;
+      cats -= 1;
     }
 
     if (enemyHealth <= 0) {
       isDead = true;
+      cats -= 1;
     }
   }
 }
@@ -86,6 +90,8 @@ class squarecat {
   boolean isDead = false;
   squarecat() {
     enemyHealth = 20;
+    catCoins += -142;
+    cats += 1;
   }
   void act() {
     if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
@@ -137,10 +143,12 @@ class squarecat {
     if (x >= 1300) {
       isDead = true;
       health -= 15;
+      cats -= 1;
     }
 
     if (enemyHealth <= 0) {
       isDead = true;
+      cats -= 1;
     }
   }
 }
@@ -159,6 +167,8 @@ class moab {
   boolean isDead = false;
   moab() {
     enemyHealth = 100;
+    catCoins += -284;
+    cats += 1;
   }
   void act() {
     if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
@@ -214,10 +224,12 @@ class moab {
     if (x >= 1300) {
       isDead = true;
       health -= 45;
+      cats -= 1;
     }
 
     if (enemyHealth <= 0) {
       isDead = true;
+      cats -= 1;
     }
   }
 }
@@ -235,6 +247,8 @@ class rollcat {
   rollcat() {
     enemyHealth = 10;
     angle = 0;
+    catCoins += -18;
+    cats += 1;
   }
   void act() {
     if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
@@ -283,10 +297,12 @@ class rollcat {
     if (x >= 1300) {
       isDead = true;
       health -= 5;
+      cats -= 1;
     }
 
     if (enemyHealth <= 0) {
       isDead = true;
+      cats -= 1;
     }
   }
 }
@@ -303,6 +319,8 @@ class mediccat {
   boolean isDead = false;
   mediccat() {
     enemyHealth = 15;
+    catCoins += -64;
+    cats += 1;
   }
   void act() {
     if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
@@ -369,10 +387,12 @@ class mediccat {
     if (x >= 1300) {
       isDead = true;
       health -= 7;
+      cats -= 1;
     }
 
     if (enemyHealth <= 0) {
       isDead = true;
+      cats -= 1;
     }
   }
 }

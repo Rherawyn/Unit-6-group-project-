@@ -10,6 +10,8 @@ void game() {
   stroke(black);
   fill(black);
   gameMap();
+  gamePlay();
+  enemyspawns();  
   stroke(#332000);
   fill(#704700); //brown
   strokeWeight(5);
@@ -34,9 +36,13 @@ void game() {
   ellipse(1258, 93, 14, 12);
   text(health, 1277, 101);
   
-  if(health <= 0) {
-   mode = "gameover"; 
-  }
+  fill(black); // round display
+  text("round " + rounds, 25,25);
+  
+  
+  //if(health <= 0) {
+  // mode = "gameover"; 
+  //}
   
   fill(255); //price display
   text("Price: " + price, 1233, 150);
@@ -66,8 +72,6 @@ void game() {
   }
   triangle(1233,830, 1233,850, 1247,840);
   triangle(1253,830, 1253,850, 1267,840);
-  
-  gamePlay();
   
   
   //Chris jumble gibberish code stuff from this point on :D
@@ -293,46 +297,51 @@ void gameKeyPressed() {
   if (key == 'a') { //remove enemy
     normcat anEnemy = normalcatclass.get(0);
     normalcatclass.remove(anEnemy);
+    cats += -1;
   }
   
   if (key == 's') {
     squarecat anEnemy = squarecatclass.get(0);
     squarecatclass.remove(anEnemy);
+    cats += -1;
   }
   
   if (key == 'd') {
     moab anEnemy = moabclass.get(0);
     moabclass.remove(anEnemy);
+    cats += -1;
   }
   
   if (key == 'f') {
     rollcat anEnemy = rollcatclass.get(0);
     rollcatclass.remove(anEnemy);
+    cats += -1;
   }
   
   if (key == 'g') {
     mediccat anEnemy = mediccatclass.get(0);
     mediccatclass.remove(anEnemy);
+    cats += -1;
   }
   
   
   
   
-  if (key == 'z') { //spawn enemy
-    normalcatclass.add(new normcat());
-  }
-  if (key == 'x') {
-    squarecatclass.add(new squarecat());
-  }
-  if (key == 'c') { 
-    moabclass.add(new moab());
-  }
-  if (key == 'v') {
-    rollcatclass.add(new rollcat());
-  }
-  if (key == 'b') {
-    mediccatclass.add(new mediccat());
-  }
+  //if (key == 'z') { //spawn enemy
+  //  normalcatclass.add(new normcat());
+  //}
+  //if (key == 'x') {
+  //  squarecatclass.add(new squarecat());
+  //}
+  //if (key == 'c') { 
+  //  moabclass.add(new moab());
+  //}
+  //if (key == 'v') {
+  //  rollcatclass.add(new rollcat());
+  //}
+  //if (key == 'b') {
+  //  mediccatclass.add(new mediccat());
+  //}
   
   //Chris keys for placement
   if(key == '1' || key == '!') tower = "fire";
