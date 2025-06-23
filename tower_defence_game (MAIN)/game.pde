@@ -9,9 +9,7 @@ void game() {
   strokeWeight(7); //purchase menu outline
   stroke(black);
   fill(black);
-  gameMap();
-  gamePlay();
-  enemyspawns();  
+  gameMap(); 
   stroke(#332000);
   fill(#704700); //brown
   strokeWeight(5);
@@ -127,6 +125,19 @@ void game() {
   
   for(sniper aSniper : sniperguyclass){
     aSniper.act();
+    
+    if(aSniper.by1 < 0) aSniper.bx1+=0.1;
+    else aSniper.bx1-=0.1;
+    
+    if(aSniper.bx1 > 0) aSniper.by1+=0.1;
+    else aSniper.by1-=0.1;
+    
+    if(aSniper.by2 < 0) aSniper.bx2-=0.1;
+    else aSniper.bx2+=0.1;
+    
+    if(aSniper.bx2 > 0) aSniper.by2-=0.1;
+    else aSniper.by2+=0.1;
+    
     if(dist(aSniper.x,aSniper.y, mouseX,mouseY) < 100) placeable = false;
   }
   
@@ -143,12 +154,16 @@ void game() {
   
   
   //if you held the mouse
+  
+  if(mouseX < 35 || mouseX > width-235 || mouseY < 35 || mouseY > height - 35) placeable = false;
+  
   if(towerThingHeld) {
     pushMatrix();
     translate(mouseX,mouseY);
     strokeWeight(7);
     rotate(radians(90));
     scale(0.7);
+    textAlign(CENTER, CENTER);
     
     if(tower == "fire") {
       placementCircle(600);
@@ -214,21 +229,113 @@ void game() {
       
       quad(0,30, 10,40, 0,15, -10,40);
       
+      //sword code
+      translate(80, -30);
+      rotate(radians(-22.5));
+      stroke(70);
+      fill(70);
+      quad(0,-220, 0,-100, 15,-100, 10,-200);
+      fill(50);
+      quad(0,-220, 0,-100, -15,-100, -10,-200);
+      fill(black);
+      stroke(black);
+      triangle(-25,-110, -15,-100, -15,-90);
+      triangle(25,-110, 15,-100, 15,-90);
+      quad(-15,-100, -15,-90, 15,-90, 15,-100);
+      quad(-15,-90, 15,-90, 5,-85, -5,-85);
+      quad(-5,-85, -5,-75, 5,-75, 5,-85);
+      
+      stroke(black);
+      noFill();
+      strokeWeight(7);
+      line(-10,-200, -15,-100);
+      line(10,-200, 15,-100);
+      line(-10,-200, 0,-220);
+      line(10,-200, 0,-220);
+      line(-15,-100, 15,-100);
+      
+      line(-15,-100, -25,-110);
+      line(15,-100, 25,-110);
+      line(-25,-110, -15,-90);
+      line(25,-110, 15,-90);
+      line(-15,-90, -5,-85);
+      line(15,-90, 5,-85);
+      line(-5,-85, -5,-75);
+      line(5,-85, 5,-75);
+      
+      strokeWeight(2);
+      line(0,-220, 0,-100);
+      
+      fill(red);
+      stroke(red);
+      strokeWeight(2);
+      quad(0,-105, 8,-100, 0,-95, -8,-100);
+      quad(0,-78, 5,-73, 0,-68, -5,-73);
+      
+      
+      stroke(black);
+      noFill();
+      strokeWeight(5);
+      line(0,-105, 8,-100);
+      line(8,-100, 0,-95);
+      line(0,-95, -8,-100);
+      line(0,-105, -8,-100);
+      quad(0,-78, 5,-73, 0,-68, -5,-73);
+      
     } else if(tower == "sniper") {
       placementCircle(10000);
+      strokeWeight(7);
       stroke(black);
-      fill(200);
+      fill(#2A340E);
       circle(0,0, 100);
+      fill(#8a925e);
+      noStroke();
+      circle(-30,-20, 20);
+      circle(10,10, 30);
+      circle(30,-10, 20);
+      circle(-20,30, 15);
+      circle(0,-25, 25);
+      circle(25,35, 10);
+      circle(-15,-5, 10);
+      circle(-40,10, 15);
+      stroke(black);
+      noFill();
+      circle(0,0, 100);
+      circle(0,0, 60);
+      
+      //bullet
+      bulletSpin(0.5,0.5, 50, 1);
+      bulletSpin(0.5,0.5, 50, -1);
+      bulletSpin(-0.5,-0.5, 50, 1);
+      bulletSpin(-0.5,-0.5, 50, -1);
     } else {
       placementCircle(110);
       rotate(radians(-90));
+      for(int i = 0; i<5; i++) {
+        fill(150);
+        noStroke();
+        quad(-10,-70, 10,-70, 12,-50, -12,-50);
+        noFill();
+        stroke(black);
+        line(-10, -70, 10, -70);
+        arc(-30,-60, 40,40, radians(-30),radians(35));
+        arc(30,-60, 40,40, radians(145),radians(210));
+        rotate(radians(360/5));
+      }
       stroke(black);
-      fill(200);
+      fill(150);
       circle(0,0, 100);
+      textSize(70);
+      fill(100, 200, 0);
+      text("$", 0,-5);
     }
     popMatrix();
   }
   
+  
+  //cat spawns
+  gamePlay(); 
+  enemyspawns();
   
   //ponter
   pointerclass.add(new pointer());

@@ -173,64 +173,160 @@ class elecwiz {
 
 
 class sword {
-  float x, y;
-
+  float x,y, timer, swordPos;
+  boolean can = true;
+  
   sword() {
     x = mouseX;
     y = mouseY;
+    timer = swordPos = 0;
   }
-
+  
   void act() {
     pushMatrix();
-    translate(x, y);
+    translate(x,y);
+    strokeWeight(7);
     scale(0.7);
-    rotate(atan2(mouseY-y, mouseX-x)+radians(90));
+    rotate(atan2(mouseY-y,mouseX-x)+radians(90));
     strokeWeight(7);
     stroke(black);
     fill(50);
-    circle(0, 0, 100);
+    circle(0,0, 100);
     noFill();
-    arc(0, 5, 70, 70, radians(230), radians(310));
-    translate(0, 20);
+    arc(0,5, 70,70, radians(230),radians(310));
+    translate(0,20);
     fill(red);
     stroke(red);
     strokeWeight(2);
-    triangle(0, -20, 15, -10, -15, -10);
-
-    triangle(0, -15, 20, 0, -20, 0);
-    triangle(0, -15, 20, 0, -20, 0);
-
-    triangle(20, -10, -20, -10, 0, 20);
-
-    triangle(-20, 20, 0, 20, -10, 5);
-    triangle(20, 20, 0, 20, 10, 5);
-
-    triangle(10, 20, -10, 20, 0, 50);
-
-    quad(0, 30, 10, 40, 0, 15, -10, 40);
+    triangle(0,-20, 15,-10, -15,-10);
+    
+    triangle(0,-15, 20,0, -20,0);
+    triangle(0,-15, 20,0, -20,0);
+    
+    triangle(20,-10, -20,-10, 0,20);
+    
+    triangle(-20,20, 0,20, -10,5);
+    triangle(20,20, 0,20, 10,5);
+    
+    triangle(10,20, -10,20, 0,50);
+    
+    quad(0,30, 10,40, 0,15, -10,40);
+    
+    
+    //sword code
+    translate(80+(swordPos), -30+(swordPos*2));
+    rotate(radians(-22.5));
+    stroke(70);
+    fill(70);
+    quad(0,-220, 0,-100, 15,-100, 10,-200);
+    fill(50);
+    quad(0,-220, 0,-100, -15,-100, -10,-200);
+    fill(black);
+    stroke(black);
+    triangle(-25,-110, -15,-100, -15,-90);
+    triangle(25,-110, 15,-100, 15,-90);
+    quad(-15,-100, -15,-90, 15,-90, 15,-100);
+    quad(-15,-90, 15,-90, 5,-85, -5,-85);
+    quad(-5,-85, -5,-75, 5,-75, 5,-85);
+    
+    stroke(black);
+    noFill();
+    strokeWeight(7);
+    line(-10,-200, -15,-100);
+    line(10,-200, 15,-100);
+    line(-10,-200, 0,-220);
+    line(10,-200, 0,-220);
+    line(-15,-100, 15,-100);
+    
+    line(-15,-100, -25,-110);
+    line(15,-100, 25,-110);
+    line(-25,-110, -15,-90);
+    line(25,-110, 15,-90);
+    line(-15,-90, -5,-85);
+    line(15,-90, 5,-85);
+    line(-5,-85, -5,-75);
+    line(5,-85, 5,-75);
+    
+    strokeWeight(2);
+    line(0,-220, 0,-100);
+    
+    fill(red);
+    stroke(red);
+    strokeWeight(2);
+    quad(0,-105, 8,-100, 0,-95, -8,-100);
+    quad(0,-78, 5,-73, 0,-68, -5,-73);
+    
+    
+    stroke(black);
+    noFill();
+    strokeWeight(5);
+    line(0,-105, 8,-100);
+    line(8,-100, 0,-95);
+    line(0,-95, -8,-100);
+    line(0,-105, -8,-100);
+    quad(0,-78, 5,-73, 0,-68, -5,-73);
+    
     popMatrix();
+    can = true;
+    if(dist(x,y, mouseX,mouseY) > 200*0.7) can = false;
+    if(timer == 280) timer = swordPos = 0;
+    timer++;
+    if(timer >= 0 && timer <= 200) swordPos += 0.2;
+    if(timer >= 250 && timer < 258) swordPos -= 5;
+    if (can == false) timer = swordPos = 0;
   }
 }
 
 
 
 class sniper {
-  float x, y;
-
+  float x,y;
+  float bx1,by1, bx2,by2;
+  float mult;
+  float time;
+  boolean can = false;
+  
   sniper() {
     x = mouseX;
     y = mouseY;
+    mult = 40;
+    bx1 = by1 = bx2 = by2 = 0.5;
+    time = 0;
   }
-
+  
   void act() {
+    time++;
+    can = false;
+    if(dist(mouseX,mouseY, x,y) < 10000) can = true;
+    if(time == 500||!can) time = 0;
     pushMatrix();
-    translate(x, y);
+    translate(x,y);
     scale(0.7);
-    rotate(atan2(mouseY-y, mouseX-x)+radians(90));
+    rotate(atan2(mouseY-y,mouseX-x)+radians(90));
     strokeWeight(7);
     stroke(black);
-    fill(200);
-    circle(0, 0, 100);
+    fill(#2A340E);
+    circle(0,0, 100);
+    fill(#8a925e);
+    noStroke();
+    circle(-30,-20, 20);
+    circle(10,10, 30);
+    circle(30,-10, 20);
+    circle(-20,30, 15);
+    circle(0,-25, 25);
+    circle(25,35, 10);
+    circle(-15,-5, 10);
+    circle(-40,10, 15);
+    stroke(black);
+    noFill();
+    circle(0,0, 100);
+    circle(0,0, 60);
+    
+    //bullet
+    if (time >= 470 || time < 200) bulletSpin(bx1,by1, mult, 1);
+    if(time >= 480 || time < 210) bulletSpin(bx2,by2, mult, -1);
+    if(time >= 490 || time < 220) bulletSpin(bx1*-1,by1*-1, mult, 1);
+    if(time >= 500 || time < 230) bulletSpin(bx2*-1,by2*-1, mult, -1);
     popMatrix();
   }
 }
@@ -288,4 +384,18 @@ class farm {
     rot += 0.01;
     rot *= 1.03;
   }
+}
+
+void bulletSpin(float x, float y, float mult, float side) {
+  pushMatrix();
+    translate(100*side+(x*mult), 0+(y*mult));
+    noStroke();
+    fill(yellow);
+    quad(-5,10, -5,-10, 5,-10, 5,10);
+    stroke(black);
+    line(-5,10, 5,10);
+    line(-5,10, -5,-10);
+    line(5,10, 5,-10);
+    arc(0,-10, 10,10, radians(180),radians(360));
+    popMatrix();
 }
