@@ -119,6 +119,21 @@ void game() {
   
   for(sniper aSniper : sniperguyclass){
     aSniper.act();
+    
+    if(aSniper.by1 < 0) aSniper.bx1-=0.1;
+    else aSniper.bx1+=0.1;
+    
+    if(aSniper.bx1 > 0) aSniper.by1-=0.1;
+    else aSniper.by1+=0.1;
+    
+    if(aSniper.by2 < 0) aSniper.bx2+=0.1;
+    else aSniper.bx2-=0.1;
+    
+    if(aSniper.bx2 > 0) aSniper.by2+=0.1;
+    else aSniper.by2-=0.1;
+    
+    
+    
     if(dist(aSniper.x,aSniper.y, mouseX,mouseY) < 100) placeable = false;
   }
   
@@ -207,6 +222,59 @@ void game() {
       
       quad(0,30, 10,40, 0,15, -10,40);
       
+      //sword code
+      translate(80, -30);
+      rotate(radians(-22.5));
+      stroke(70);
+      fill(70);
+      quad(0,-220, 0,-100, 15,-100, 10,-200);
+      fill(50);
+      quad(0,-220, 0,-100, -15,-100, -10,-200);
+      fill(black);
+      stroke(black);
+      triangle(-25,-110, -15,-100, -15,-90);
+      triangle(25,-110, 15,-100, 15,-90);
+      quad(-15,-100, -15,-90, 15,-90, 15,-100);
+      quad(-15,-90, 15,-90, 5,-85, -5,-85);
+      quad(-5,-85, -5,-75, 5,-75, 5,-85);
+      
+      stroke(black);
+      noFill();
+      strokeWeight(7);
+      line(-10,-200, -15,-100);
+      line(10,-200, 15,-100);
+      line(-10,-200, 0,-220);
+      line(10,-200, 0,-220);
+      line(-15,-100, 15,-100);
+      
+      line(-15,-100, -25,-110);
+      line(15,-100, 25,-110);
+      line(-25,-110, -15,-90);
+      line(25,-110, 15,-90);
+      line(-15,-90, -5,-85);
+      line(15,-90, 5,-85);
+      line(-5,-85, -5,-75);
+      line(5,-85, 5,-75);
+      
+      strokeWeight(2);
+      line(0,-220, 0,-100);
+      
+      fill(red);
+      stroke(red);
+      strokeWeight(2);
+      quad(0,-105, 8,-100, 0,-95, -8,-100);
+      quad(0,-78, 5,-73, 0,-68, -5,-73);
+      
+      
+      stroke(black);
+      noFill();
+      strokeWeight(5);
+      line(0,-105, 8,-100);
+      line(8,-100, 0,-95);
+      line(0,-95, -8,-100);
+      line(0,-105, -8,-100);
+      quad(0,-78, 5,-73, 0,-68, -5,-73);
+        
     } else if(tower == "sniper") {
       placementCircle(10000);
       stroke(black);

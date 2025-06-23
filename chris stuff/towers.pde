@@ -176,11 +176,13 @@ class elecwiz {
 
 
 class sword {
-  float x,y;
+  float x,y, timer, swordPos;
+  boolean can = true;
   
   sword() {
     x = mouseX;
     y = mouseY;
+    timer = swordPos = 0;
   }
   
   void act() {
@@ -215,7 +217,8 @@ class sword {
     
     
     //sword code
-    translate(0, -30);
+    translate(80+(swordPos), -30+(swordPos*2));
+    rotate(radians(-22.5));
     stroke(70);
     fill(70);
     quad(0,-220, 0,-100, 15,-100, 10,-200);
@@ -265,12 +268,15 @@ class sword {
     line(0,-95, -8,-100);
     line(0,-105, -8,-100);
     quad(0,-78, 5,-73, 0,-68, -5,-73);
-    //line();
-    //line();
-    //line();
-    //line();
     
     popMatrix();
+    can = true;
+    if(dist(x,y, mouseX,mouseY) > 200*0.7) can = false;
+    if(timer == 280) timer = swordPos = 0;
+    timer++;
+    if(timer >= 0 && timer <= 200) swordPos += 0.2;
+    if(timer >= 250 && timer < 258) swordPos -= 5;
+    if (can == false) timer = swordPos = 0;
   }
 }
 
@@ -278,10 +284,14 @@ class sword {
 
 class sniper {
   float x,y;
+  float bx1,by1, bx2,by2;
+  float mult;
   
   sniper() {
     x = mouseX;
     y = mouseY;
+    mult = 40;
+    bx1 = by1 = bx2 = by2 = 0.5;
   }
   
   void act() {
@@ -293,6 +303,12 @@ class sniper {
     stroke(black);
     fill(200);
     circle(0,0, 100);
+    
+    //bullet
+    bulletSpin(bx1,by1, mult, 1);
+    bulletSpin(bx1*-1,by1*-1, mult, 1);
+    bulletSpin(bx2,by2, mult, -1);
+    bulletSpin(bx2*-1,by2*-1, mult, -1);
     popMatrix();
   }
 }
@@ -350,4 +366,18 @@ class farm {
     rot += 0.01;
     rot *= 1.03;
   }
+}
+
+void bulletSpin(float x, float y, float mult, float side) {
+  pushMatrix();
+    translate(100*side+(x*mult), 0+(y*mult));
+    noStroke();
+    fill(yellow);
+    quad(-5,10, -5,-10, 5,-10, 5,10);
+    stroke(black);
+    line(-5,10, 5,10);
+    line(-5,10, -5,-10);
+    line(5,10, 5,-10);
+    arc(0,-10, 10,10, radians(180),radians(360));
+    popMatrix();
 }
