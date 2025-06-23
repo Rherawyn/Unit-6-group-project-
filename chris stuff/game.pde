@@ -120,17 +120,17 @@ void game() {
   for(sniper aSniper : sniperguyclass){
     aSniper.act();
     
-    if(aSniper.by1 < 0) aSniper.bx1-=0.1;
-    else aSniper.bx1+=0.1;
+    if(aSniper.by1 < 0) aSniper.bx1+=0.1;
+    else aSniper.bx1-=0.1;
     
-    if(aSniper.bx1 > 0) aSniper.by1-=0.1;
-    else aSniper.by1+=0.1;
+    if(aSniper.bx1 > 0) aSniper.by1+=0.1;
+    else aSniper.by1-=0.1;
     
-    if(aSniper.by2 < 0) aSniper.bx2+=0.1;
-    else aSniper.bx2-=0.1;
+    if(aSniper.by2 < 0) aSniper.bx2-=0.1;
+    else aSniper.bx2+=0.1;
     
-    if(aSniper.bx2 > 0) aSniper.by2+=0.1;
-    else aSniper.by2-=0.1;
+    if(aSniper.bx2 > 0) aSniper.by2-=0.1;
+    else aSniper.by2+=0.1;
     
     
     
@@ -277,9 +277,30 @@ void game() {
         
     } else if(tower == "sniper") {
       placementCircle(10000);
+      strokeWeight(7);
       stroke(black);
-      fill(200);
+      fill(#2A340E);
       circle(0,0, 100);
+      fill(#8a925e);
+      noStroke();
+      circle(-30,-20, 20);
+      circle(10,10, 30);
+      circle(30,-10, 20);
+      circle(-20,30, 15);
+      circle(0,-25, 25);
+      circle(25,35, 10);
+      circle(-15,-5, 10);
+      circle(-40,10, 15);
+      stroke(black);
+      noFill();
+      circle(0,0, 100);
+      circle(0,0, 60);
+      
+      //bullet
+      bulletSpin(0.5,0.5, 50, 1);
+      bulletSpin(0.5,0.5, 50, -1);
+      bulletSpin(-0.5,-0.5, 50, 1);
+      bulletSpin(-0.5,-0.5, 50, -1);
     } else {
       placementCircle(110);
       rotate(radians(-90));

@@ -286,29 +286,50 @@ class sniper {
   float x,y;
   float bx1,by1, bx2,by2;
   float mult;
+  float time;
+  boolean can = false;
   
   sniper() {
     x = mouseX;
     y = mouseY;
     mult = 40;
     bx1 = by1 = bx2 = by2 = 0.5;
+    time = 0;
   }
   
   void act() {
+    time++;
+    can = false;
+    if(dist(mouseX,mouseY, x,y) < 10000) can = true;
+    if(time == 500||!can) time = 0;
     pushMatrix();
     translate(x,y);
     scale(0.7);
     rotate(atan2(mouseY-y,mouseX-x)+radians(90));
     strokeWeight(7);
     stroke(black);
-    fill(200);
+    fill(#2A340E);
     circle(0,0, 100);
+    fill(#8a925e);
+    noStroke();
+    circle(-30,-20, 20);
+    circle(10,10, 30);
+    circle(30,-10, 20);
+    circle(-20,30, 15);
+    circle(0,-25, 25);
+    circle(25,35, 10);
+    circle(-15,-5, 10);
+    circle(-40,10, 15);
+    stroke(black);
+    noFill();
+    circle(0,0, 100);
+    circle(0,0, 60);
     
     //bullet
-    bulletSpin(bx1,by1, mult, 1);
-    bulletSpin(bx1*-1,by1*-1, mult, 1);
-    bulletSpin(bx2,by2, mult, -1);
-    bulletSpin(bx2*-1,by2*-1, mult, -1);
+    if (time >= 470 || time < 200) bulletSpin(bx1,by1, mult, 1);
+    if(time >= 480 || time < 210) bulletSpin(bx2,by2, mult, -1);
+    if(time >= 490 || time < 220) bulletSpin(bx1*-1,by1*-1, mult, 1);
+    if(time >= 500 || time < 230) bulletSpin(bx2*-1,by2*-1, mult, -1);
     popMatrix();
   }
 }
