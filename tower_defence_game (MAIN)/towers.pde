@@ -1,4 +1,5 @@
 class firewiz {
+  float[] vals = {0,0,0, 0,0,0};
   float x, y, rot;
   boolean switching = true;
   boolean firering = false;
@@ -8,11 +9,15 @@ class firewiz {
     x=mouseX;
     y=mouseY;
     rot = 46;
+    vals[0] = x;
+    vals[1] = y;
+    vals[2] = 300*0.7;
   }
 
   void act() {
+    vals = targetEnemy(vals);
     can = false;
-    if (dist(x, y, mouseX, mouseY) < 300*0.7) can = true;
+    if (dist(x, y, vals[3],vals[4]) < 300*0.7) can = true;
 
     if (rot<=0) switching = firering = true;
     if (rot>=45) switching = false;
@@ -31,7 +36,7 @@ class firewiz {
     pushMatrix();
     translate(x, y);
     scale(0.7);
-    rotate(atan2(mouseY-y, mouseX-x)+radians(90+rot));
+    rotate(atan2(vals[4]-y, vals[3]-x)+radians(90+rot));
     strokeWeight(7);
     stroke(black);
     fill(brown);
@@ -57,6 +62,7 @@ class firewiz {
 
 
 class icewiz {
+  float[] vals = {0,0,0, 0,0,0};
   float x, y, charge, size;
   boolean can = true;
 
@@ -65,15 +71,19 @@ class icewiz {
     y=mouseY;
     charge = 0;
     size = 40;
+    vals[0] = x;
+    vals[1] = y;
+    vals[2] = 500*0.7;
   }
 
   void act() {
+    vals = targetEnemy(vals);
     can = false;
-    if (dist(x, y, mouseX, mouseY) < 500*0.7) can = true;
+    if (dist(x, y, vals[3],vals[4]) < 500*0.7) can = true;
 
     if (charge >= size) {
       charge = 0;
-      icebulletclass.add(new ice(x, y, atan2(mouseY-y, mouseX-x)+radians(90) ));
+      icebulletclass.add(new ice(x, y, atan2(vals[4]-y, vals[3]-x)+radians(90) ));
     }
     charge+=0.6;
 
@@ -84,7 +94,7 @@ class icewiz {
     pushMatrix();
     translate(x, y);
     scale(0.7);
-    rotate(atan2(mouseY-y, mouseX-x)+radians(90));
+    rotate(atan2(vals[4]-y, vals[3]-x)+radians(90));
     strokeWeight(7);
     fill(blue);
     noStroke();
@@ -100,6 +110,7 @@ class icewiz {
 }
 
 class elecwiz {
+  float[] vals = {0,0,0, 0,0,0};
   float x, y, charge, size, side, paused, timer;
   boolean beam;
   boolean can = true;
@@ -113,11 +124,15 @@ class elecwiz {
     paused = 1;
     timer = 40;
     beam = false;
+    vals[0] = x;
+    vals[1] = y;
+    vals[2] = 400*0.7;
   }
 
   void act() {
+    vals = targetEnemy(vals);
     can = false;
-    if (dist(x, y, mouseX, mouseY) < 400*0.7) can = true;
+    if (dist(x, y, vals[3],vals[4]) < 400*0.7) can = true;
 
     if (charge >= size) {
       charge = 0;
@@ -151,7 +166,7 @@ class elecwiz {
     pushMatrix();
     translate(x, y);
     scale(0.7);
-    rotate(atan2(mouseY-y, mouseX-x)+radians(90 + side));
+    rotate(atan2(vals[4]-y, vals[3]-x)+radians(90 + side));
     strokeWeight(7);
     fill(yellow);
     noStroke();
@@ -173,6 +188,7 @@ class elecwiz {
 
 
 class sword {
+  float[] vals = {0,0,0, 0,0,0};
   float x,y, timer, swordPos;
   boolean can = true;
   
@@ -180,14 +196,18 @@ class sword {
     x = mouseX;
     y = mouseY;
     timer = swordPos = 0;
+    vals[0] = x;
+    vals[1] = y;
+    vals[2] = 200*0.7;
   }
   
   void act() {
+    vals = targetEnemy(vals);
     pushMatrix();
     translate(x,y);
     strokeWeight(7);
     scale(0.7);
-    rotate(atan2(mouseY-y,mouseX-x)+radians(90));
+    rotate(atan2(vals[4]-y, vals[3]-x)+radians(90));
     strokeWeight(7);
     stroke(black);
     fill(50);
@@ -268,7 +288,7 @@ class sword {
     
     popMatrix();
     can = true;
-    if(dist(x,y, mouseX,mouseY) > 200*0.7) can = false;
+    if(dist(x,y, vals[3],vals[4]) > 200*0.7) can = false;
     if(timer == 280) timer = swordPos = 0;
     timer++;
     if(timer >= 0 && timer <= 200) swordPos += 0.2;
@@ -280,6 +300,7 @@ class sword {
 
 
 class sniper {
+  float[] vals = {0,0,0, 0,0,0};
   float x,y;
   float bx1,by1, bx2,by2;
   float mult;
@@ -292,17 +313,21 @@ class sniper {
     mult = 40;
     bx1 = by1 = bx2 = by2 = 0.5;
     time = 0;
+    vals[0] = x;
+    vals[1] = y;
+    vals[2] = 10000*0.7;
   }
   
   void act() {
+    vals = targetEnemy(vals);
     time++;
     can = false;
-    if(dist(mouseX,mouseY, x,y) < 10000) can = true;
+    if(dist(vals[3],vals[4], x,y) < 10000) can = true;
     if(time == 500||!can) time = 0;
     pushMatrix();
     translate(x,y);
     scale(0.7);
-    rotate(atan2(mouseY-y,mouseX-x)+radians(90));
+    rotate(atan2(vals[4]-y, vals[3]-x)+radians(90));
     strokeWeight(7);
     stroke(black);
     fill(#2A340E);
@@ -398,4 +423,19 @@ void bulletSpin(float x, float y, float mult, float side) {
     line(5,10, 5,-10);
     arc(0,-10, 10,10, radians(180),radians(360));
     popMatrix();
+}
+
+float[] targetEnemy(float[] vals) {
+  vals[3] = 0;
+  vals[4] = 0;
+  vals[5] = 0;
+  for(normcat anEnemy : normalcatclass) {
+    if(dist(anEnemy.x,anEnemy.y, vals[0],vals[1]) < vals[2] && vals[5] < anEnemy.posTal) {
+      vals[3] = anEnemy.x;
+      vals[4] = anEnemy.y;
+      vals[5] = anEnemy.posTal;
+    }
+    
+  }
+  return vals;
 }

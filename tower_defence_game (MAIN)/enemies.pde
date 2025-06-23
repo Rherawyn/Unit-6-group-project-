@@ -1,4 +1,5 @@
 class normcat {
+  float posTal = 0;
   int i = 0;
   float x = lx[0];
   float y = ly[0];
@@ -15,6 +16,7 @@ class normcat {
     cats += 1;
   }
   void act() {
+    posTal += 1;
     if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
       i ++;
       println("yipee");
@@ -78,6 +80,7 @@ class normcat {
 
 
 class squarecat {
+  float posTal = 0;
   int i = 0;
   float x = lx[0];
   float y = ly[0];
@@ -94,6 +97,7 @@ class squarecat {
     cats += 1;
   }
   void act() {
+    posTal += 1;
     if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
       i ++;
       println("yipee");
@@ -155,6 +159,7 @@ class squarecat {
 
 
 class moab {
+  float posTal = 0;
   int i = 0;
   float x = lx[0];
   float y = ly[0];
@@ -171,6 +176,7 @@ class moab {
     cats += 1;
   }
   void act() {
+    posTal += 0.5;
     if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
       i ++;
       println("yipee");
@@ -235,6 +241,7 @@ class moab {
 }
 
 class rollcat {
+  float posTal = 0;
   int i = 0;
   float x = lx[0];
   float y = ly[0];
@@ -251,6 +258,7 @@ class rollcat {
     cats += 1;
   }
   void act() {
+    posTal += 2;
     if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
       i ++;
       println("yipee");
@@ -309,6 +317,7 @@ class rollcat {
 
 
 class mediccat {
+  float posTal = 0;
   int i = 0;
   float x = lx[0];
   float y = ly[0];
@@ -323,6 +332,7 @@ class mediccat {
     cats += 1;
   }
   void act() {
+    posTal += 1;
     if (dist(x, y, lx[i], ly[i]) > dist(lx[i], ly[i], lx[i+1], ly[i+1])) {
       i ++;
       println("yipee");
